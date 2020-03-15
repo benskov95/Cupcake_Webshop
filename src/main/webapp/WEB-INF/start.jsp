@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../Includes/userheader.inc"%>
 
+<%--CHECK BMI PROJEKT ANG. BANNER LINK--%>
+
 <title>Olsker Cupcakes</title>
 
 <div style="text-align: center">
@@ -11,17 +13,16 @@
     <p class="lead"><em>Bestil her:</em>
 
     <form action="FrontController" method="post">
-    <input type="hidden" name="target" value="start">
+    <input type="hidden" name="target" value="kurv">
 
         <div class="row">
             <div class="col">
                 <label>
                     <select>
                         <option selected="selected" disabled="disabled">Vælg bund</option>
-                        <option value="bund_1">Bund 1</option>
-                        <option value="bund_2">Bund 2</option>
-                        <option value="bund_3">Bund 3</option>
-                        <option value="bund_4">Bund 4</option>
+                        <c:forEach var="bund" items="${sessionScope.test}">
+                        <option value=${bund}>${bund}</option>
+                        </c:forEach>
                     </select>
                 </label>
             </div>

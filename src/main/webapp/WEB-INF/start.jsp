@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../Includes/userheader.inc"%>
 
-<%--CHECK BMI PROJEKT ANG. BANNER LINK--%>
+
 
 <title>Olsker Cupcakes</title>
 

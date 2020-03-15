@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import DBAccess.UserMapper;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
@@ -15,12 +16,13 @@ public class Start extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        HttpSession session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
-        UserMapper.login(email, password);
-        ArrayList<String> test = new ArrayList<>();
         int saldo = 500;
+        LogicFacade.login(email, password);
+
+        HttpSession session = request.getSession();
+        ArrayList<String> test = new ArrayList<>();
 
         test.add("Virker");
         test.add("Det");

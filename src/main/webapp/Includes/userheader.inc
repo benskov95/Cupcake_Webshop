@@ -12,7 +12,7 @@
 </head>
 
 <header style="text-align: center">
-    <a href="needs fixing"><img src="Images/Cupcake%20banner.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
+    <a href="FrontController?target=redirect&destination=start"><img src="Images/Cupcake%20banner.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
 </header>
 
 <body background="Images/Cupcake%20baggrund.jpg">

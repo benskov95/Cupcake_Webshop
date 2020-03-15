@@ -1,68 +1,43 @@
-<%-- 
-    Document   : index
-    Created on : Aug 22, 2017, 2:01:06 PM
-    Author     : kasper
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="Includes/header.inc"%>
 
+    <title>Olsker Cupcakes Login</title>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome page</title>
-    </head>
-    <body>
-        <h1>Welcome to Sem 2</h1>
-        
-        <table>
-            <tr><td>Login</td>
-                <td>
-                    <form name="login" action="FrontController" method="POST">
-                        <input type="hidden" name="target" value="login">
-                        Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
-                        <br>
-                        Password:<br>
-                        <input type="password" name="password" value="sesam">
-                        <br>
-                        <input type="submit" value="Submit">
-                    </form>
-                </td>
-                <td>Or Register</td>
-                <td>
-                    <form name="register" action="FrontController" method="POST">
-                        <input type="hidden" name="target" value="register">
-                        Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
-                        <br>
-                        Password:<br>
-                        <input type="password" name="password1" value="sesam">
-                        <br>
-                        Retype Password:<br>
-                        <input type="password" name="password2" value="sesam">
-                        <br>
-                        <input type="submit" value="Submit">
-                    </form>
-                </td>
-            </tr>
-        </table>
+        <div style="text-align: center">
+            <h1 class="display-4">Log ind</h1>
+            <p class="lead">Indtast e-mail og adgangskode for at fortsætte.</p>
+            <p style="color: red">${requestScope.error}</p>
+            <br>
 
+            <div class="row">
 
-<%--        Bare lige se I har en ide om hvad vi forslå I ikke gør ! det hedder scpript lets --%>
-<%--        <% String error = (String) request.getAttribute( "error");--%>
-<%--           if ( error != null) { --%>
-<%--               out.println("<H2>Error!!</h2>");--%>
-<%--               out.println(error);--%>
-<%--           }--%>
-<%--        %>--%>
+                <div class="col-md">
+                </div>
 
-        <c:if test = "${requestScope.error!= null}" >
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="target" value="start">
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Adgangskode:</label>
+                        <input type="password" class="form-control" id="pass" name="pass">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Log ind</button>
+                    <br>
+                    <br>
+                    <a href="nykunde.jsp">Jeg har ikke en konto </a>
+                    <br>
+                </form>
 
-           <h2>Error ! </h2>
-            ${requestScope.error}
+                <div class="col-md">
+                </div>
 
-        </c:if>
-    </body>
-</html>
+            </div>
+
+        </div>
+
+<%@include file="Includes/footer.inc"%>

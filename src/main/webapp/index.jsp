@@ -10,7 +10,7 @@
     <h1 class="display-4">Log ind</h1>
     <p class="lead">Indtast e-mail og adgangskode for at fortsætte.</p>
     <p style="color: red">${requestScope.error}</p>
-    <p style="color: green">${requestScope.nykunde}</p>
+    <p style="color: greenyellow">${requestScope.nykunde}</p>
     <br>
 
     <div class="row">

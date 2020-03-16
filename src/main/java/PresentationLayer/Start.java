@@ -20,6 +20,7 @@ public class Start extends Command {
         String navn = LogicFacade.login(email, password).getName();
         int saldo = LogicFacade.login(email, password).getCredit();
 
+
         HttpSession session = request.getSession();
         ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
@@ -30,6 +31,10 @@ public class Start extends Command {
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);
 
+        if (email.equals("admin@admin.com") && password.equals("admin")) {
+            return "adminstart";
+        } else {
         return "start";
+        }
     }
 }

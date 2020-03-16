@@ -3,6 +3,8 @@
 <%@include file="../Includes/userheader.inc"%>
 
 
+<title>Checkout</title>
+
 <div style="text-align: center">
     <h1 class="display-4">Tak for din bestilling ${requestScope.navn}!</h1>
     <br>
@@ -31,7 +33,7 @@
 </div>
 
 <div style="text-align: center">
-    <a href="start.html" data-toggle="tooltip" title="Tilbage til forsiden"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
+    <a href="FrontController?target=redirect&destination=start" data-toggle="tooltip" title="Tilbage til forsiden"><i class="fa fa-arrow-circle-left fa-2x"></i></a>
 </div>
 
 

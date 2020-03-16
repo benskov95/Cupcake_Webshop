@@ -5,14 +5,14 @@ public class Cupcake {
     private String bottomName;
     private String toppingName;
     private int quantity;
-    private int totalPrice;
+    private int combinedPrice;
 
 
     public Cupcake(String bottomName, String toppingName, int quantity, int totalPrice) {
         this.bottomName = bottomName;
         this.toppingName = toppingName;
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.combinedPrice = totalPrice;
     }
 
     public String getBottomName() {
@@ -39,11 +39,11 @@ public class Cupcake {
         this.quantity = quantity;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public int getCombinedPrice() {
+        return combinedPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setCombinedPrice(int combinedPrice) {
+        this.combinedPrice = combinedPrice;
     }
 }

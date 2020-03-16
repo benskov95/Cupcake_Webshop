@@ -16,6 +16,7 @@
     <input type="hidden" name="target" value="kurv">
     <input type="hidden" name="email" value=${requestScope.email}>
     <input type="hidden" name="saldo" value=${requestScope.saldo}>
+    <input type="hidden" name="navn" value="${requestScope.navn}">
 
         <div class="row">
             <div class="col">

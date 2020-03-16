@@ -27,7 +27,7 @@
             <td>${cupcake.bottomName}</td>
             <td>${cupcake.toppingName}</td>
             <td>${cupcake.quantity}</td>
-            <td>${cupcake.totalPrice} kr</td>
+            <td>${cupcake.combinedPrice} kr</td>
         </tr>
         </c:forEach>
 
@@ -37,6 +37,8 @@
         <input type="hidden" name="target" value="checkout">
         <input type="hidden" name="email" value=${requestScope.email}>
         <input type="hidden" name="saldo" value=${requestScope.saldo}>
+        <input type="hidden" name="navn" value=${requestScope.navn}>
+        <input type="hidden" name="totalPrice" value=${requestScope.totalPrice}>
 
         <br>
         <div style="float: right">Samlet pris: ${requestScope.totalPrice} kr</div>

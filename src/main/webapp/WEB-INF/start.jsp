@@ -22,7 +22,7 @@
                 <label>
                     <select name="bottom">
                         <option selected="selected" disabled="disabled">Vælg bund</option>
-                        <c:forEach var="bottom" items="${sessionScope.bottomsAndToppings}">
+                        <c:forEach var="bottom" items="${sessionScope.bottoms}">
                         <option value=${bottom.bottomName}>${bottom.bottomName}</option>
                         </c:forEach>
                     </select>
@@ -32,7 +32,7 @@
                 <label>
                     <select name="topping">
                         <option selected="selected" disabled="disabled">Vælg topping</option>
-                        <c:forEach var="topping" items="${sessionScope.bottomsAndToppings}">
+                        <c:forEach var="topping" items="${sessionScope.toppings}">
                         <option value=${topping.toppingName}>${topping.toppingName}</option>
                         </c:forEach>
                     </select>

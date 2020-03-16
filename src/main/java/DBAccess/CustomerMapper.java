@@ -19,8 +19,9 @@ import java.util.ArrayList;
 public class CustomerMapper {
 
     public static void createCustomer(Customer customer) throws LoginSampleException {
+
+        Connection con = Connector.connection();
         try {
-            Connection con = Connector.connection();
             String SQL = "INSERT INTO customer (name, email, password, role) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString(1, customer.getName());
@@ -32,14 +33,15 @@ public class CustomerMapper {
             ids.next();
             int id = ids.getInt( 1 );
             customer.setId( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
+        } catch ( SQLException ex ) {
             throw new LoginSampleException( ex.getMessage() );
         }
     }
 
     public static Customer login(String email, String password ) throws LoginSampleException {
+
+        Connection con = Connector.connection();
         try {
-            Connection con = Connector.connection();
             String SQL = "SELECT customer_id, name, role, credit FROM customer "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
@@ -58,19 +60,20 @@ public class CustomerMapper {
             } else {
                 throw new LoginSampleException( "E-mail eller adgangskode er forkert. Prøv igen." );
             }
-        } catch ( ClassNotFoundException | SQLException ex ) {
+        } catch ( SQLException ex ) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
 
-    public static ArrayList<Customer> getAllCustomers() {
+    public static ArrayList<Customer> getAllCustomers() throws LoginSampleException {
 
         ArrayList<Customer> customers = new ArrayList<>();
 
         String sql = "select * from customer";
-        try (Connection con = Connector.connection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        Connection con = Connector.connection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
+
             while (resultSet.next()) {
                 int id = resultSet.getInt("customer_id");
                 String name = resultSet.getString("name");
@@ -82,7 +85,7 @@ public class CustomerMapper {
                 Customer customer = new Customer(id, name, email, credit);
                 customers.add(customer);
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             System.out.println("Connection error");
             e.printStackTrace();
         }

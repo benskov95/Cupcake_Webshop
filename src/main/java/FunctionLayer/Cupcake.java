@@ -1,17 +1,18 @@
 package FunctionLayer;
 
-public class BottomAndTop {
+public class Cupcake {
 
     private String bottomName;
     private String toppingName;
-    private int bPrice;
-    private int tPrice;
+    private int quantity;
+    private int totalPrice;
 
-    public BottomAndTop(String bottomName, String toppingName, int bprice, int tprice) {
+
+    public Cupcake(String bottomName, String toppingName, int quantity, int totalPrice) {
         this.bottomName = bottomName;
         this.toppingName = toppingName;
-        this.bPrice = bprice;
-        this.tPrice = tprice;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
 
     public String getBottomName() {
@@ -30,19 +31,19 @@ public class BottomAndTop {
         this.toppingName = toppingName;
     }
 
-    public int getbPrice() {
-        return bPrice;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setbPrice(int bPrice) {
-        this.bPrice = bPrice;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public int gettPrice() {
-        return tPrice;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void settPrice(int tPrice) {
-        this.tPrice = tPrice;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

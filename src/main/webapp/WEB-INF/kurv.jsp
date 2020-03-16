@@ -22,18 +22,14 @@
             <th>Pris</th>
         </tr>
         </thead>
+        <c:forEach var="cupcake" items="${sessionScope.cupcakes}">
         <tr>
-            <td>Vanilla</td>
-            <td>Strawberry</td>
-            <td>2</td>
-            <td>22 kr</td>
+            <td>${cupcake.bottomName}</td>
+            <td>${cupcake.toppingName}</td>
+            <td>${cupcake.quantity}</td>
+            <td>${cupcake.totalPrice} kr</td>
         </tr>
-        <tr>
-            <td>Chocolate</td>
-            <td>Rum/Raisin</td>
-            <td>1</td>
-            <td>12 kr</td>
-        </tr>
+        </c:forEach>
 
     </table>
 
@@ -43,12 +39,12 @@
         <input type="hidden" name="saldo" value=${requestScope.saldo}>
 
         <br>
-        <div style="float: right">Samlet pris: 34 kr</div>
+        <div style="float: right">Samlet pris: ${requestScope.totalPrice} kr</div>
         <br>
         <button type="submit" class="btn btn-primary" style="float: right">Til checkout</button>
     </form>
 
-    <form action="start.html" method="post" style="float: left">
+    <form action="FrontController?target=redirect&destination=start" method="post" style="float: left">
         <button type="submit" class="btn btn-primary" style="float: right">Jeg er ikke færdig...</button>
     </form>
 

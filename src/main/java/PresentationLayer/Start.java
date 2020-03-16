@@ -21,12 +21,14 @@ public class Start extends Command {
         int saldo = LogicFacade.login(email, password).getCredit();
 
         HttpSession session = request.getSession();
-        ArrayList<BottomAndTop> bottomsAndToppings = BottomMapper.getAllBottomsAndToppings();
+        ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
+        ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
 
         request.setAttribute("saldo", saldo);
         request.setAttribute("email", email);
         request.setAttribute("navn", navn);
-        session.setAttribute("bottomsAndToppings", bottomsAndToppings);
+        session.setAttribute("bottoms", bottoms);
+        session.setAttribute("toppings", toppings);
 
         return "start";
     }

@@ -2,7 +2,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
+import FunctionLayer.Customer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,16 +18,16 @@ public class Login extends Command {
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "password" );
-        User user = LogicFacade.login( email, password );
+        Customer customer = LogicFacade.login( email, password );
 
         HttpSession session = request.getSession();
 
-        session.setAttribute( "user", user );
-        session.setAttribute( "role", user.getRole() );
+        session.setAttribute( "user", customer);
+        session.setAttribute( "role", customer.getRole() );
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
 
-        return user.getRole() + "page";
+        return customer.getRole() + "page";
     }
 
 }

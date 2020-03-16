@@ -10,6 +10,6 @@ INSERT INTO `UsersTest` VALUES
     (3,'robin@somewhere.com','batman','employee'),
     (4,'someone@nowhere.com','sesam','customer');
 
--- make a new user for the test database
+-- make a new customer for the test database
 CREATE USER 'testinguser' IDENTIFIED BY 'try1try2tryAgain';
 GRANT ALL PRIVILEGES ON useradminTest.* TO 'testinguser';

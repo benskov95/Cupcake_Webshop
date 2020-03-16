@@ -18,28 +18,27 @@
         <div class="row">
             <div class="col">
                 <label>
-                    <select>
+                    <select name="bottom">
                         <option selected="selected" disabled="disabled">Vælg bund</option>
-                        <c:forEach var="bund" items="${sessionScope.test}">
-                        <option value=${bund}>${bund}</option>
+                        <c:forEach var="bottom" items="${sessionScope.bottomsAndToppings}">
+                        <option value=${bottom.bottomName}>${bottom.bottomName}</option>
                         </c:forEach>
                     </select>
                 </label>
             </div>
             <div class="col">
                 <label>
-                    <select>
+                    <select name="topping">
                         <option selected="selected" disabled="disabled">Vælg topping</option>
-                        <option value="topping_1">Topping 1</option>
-                        <option value="topping_2">Topping 2</option>
-                        <option value="topping_3">Topping 3</option>
-                        <option value="topping_4">Topping 4</option>
+                        <c:forEach var="topping" items="${sessionScope.bottomsAndToppings}">
+                        <option value=${topping.toppingName}>${topping.toppingName}</option>
+                        </c:forEach>
                     </select>
                 </label>
             </div>
             <div class="col">
                 <label>
-                    <select>
+                    <select name="quantity">
                         <option selected="selected" disabled="disabled">Vælg antal</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

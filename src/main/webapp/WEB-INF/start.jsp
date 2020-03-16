@@ -14,6 +14,8 @@
 
     <form action="FrontController" method="post">
     <input type="hidden" name="target" value="kurv">
+    <input type="hidden" name="email" value=${requestScope.email}>
+    <input type="hidden" name="saldo" value=${requestScope.saldo}>
 
         <div class="row">
             <div class="col">

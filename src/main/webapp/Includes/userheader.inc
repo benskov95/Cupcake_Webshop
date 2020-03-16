@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active" style="right: auto">
-                <a class="nav-link" href="index.jsp">Log ud</a>
+                <a class="nav-link" href="FrontController?target=redirect&destination=index">Log ud</a>
             </li>
             <li class="nav-item active" style="right: auto">
                 <a class="nav-link" href="index.jsp">Mine ordrer</a>

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../Includes/userheader.inc"%>
 
-${applicationScope.email}
+
 
 <title>Kurv</title>
 
@@ -12,7 +12,7 @@ ${applicationScope.email}
 
     <h1>Bestillinger</h1>
     <br>
-    ${applicationScope.email}
+
     <table class="table table-striped">
         <thead class="thead-light">
         <tr>

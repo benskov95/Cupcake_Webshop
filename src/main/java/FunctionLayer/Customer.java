@@ -13,7 +13,8 @@ public class Customer {
         this.role = role;
     }
 
-    public Customer(String name, String email, int credit) {
+    public Customer(int id, String name, String email, int credit) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.credit = credit;

@@ -17,6 +17,7 @@ public class Start extends Command {
 
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
+        String navn = LogicFacade.login(email, password).getName();
         int saldo = LogicFacade.login(email, password).getCredit();
 
         HttpSession session = request.getSession();
@@ -24,6 +25,7 @@ public class Start extends Command {
 
         request.setAttribute("saldo", saldo);
         request.setAttribute("email", email);
+        request.setAttribute("navn", navn);
         session.setAttribute("bottomsAndToppings", bottomsAndToppings);
 
         return "start";

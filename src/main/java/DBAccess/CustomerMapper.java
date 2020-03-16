@@ -79,8 +79,7 @@ public class CustomerMapper {
                 String role = resultSet.getString("role");
                 int credit = resultSet.getInt("credit");
 
-                Customer customer = new Customer(name, email, credit);
-                customer.setId(id);
+                Customer customer = new Customer(id, name, email, credit);
                 customers.add(customer);
             }
         } catch (SQLException | ClassNotFoundException e) {

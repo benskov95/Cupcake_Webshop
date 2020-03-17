@@ -18,7 +18,6 @@ public class Checkout extends Command {
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
-        int test = 1;
         int toppingId;
         int bottomId;
 
@@ -27,18 +26,18 @@ public class Checkout extends Command {
 
         for (Cupcake cupcake : cupcakes) {
 
-            OrderMapper.addOrder(customer.getId());
-            int orderId = OrderMapper.getOrderId(customer.getId());
-
-            toppingId = getToppingId(cupcake.getToppingName());
-            bottomId = getBottomId(cupcake.getBottomName());
-
-            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+//            OrderMapper.addOrder(customer.getId());
+//            int orderId = OrderMapper.getOrderId(customer.getId());
+//
+//            toppingId = getToppingId(cupcake.getToppingName());
+//            bottomId = getBottomId(cupcake.getBottomName());
+//
+//            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
         }
 
         int purchase = customer.getCredit() - totalPrice;
         customer.setCredit(purchase);
-        session.setAttribute("test", test);
+        session.setAttribute("hasPaid", true);
 
         return "checkout";
     }

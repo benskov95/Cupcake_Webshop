@@ -28,7 +28,7 @@ public class Login extends Command {
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
         ArrayList<Cupcake> cupcakes = new ArrayList<>();
 
-        session.setAttribute("test", 0);
+        session.setAttribute("hasPaid", false);
         session.setAttribute("cupcakes", cupcakes);
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);

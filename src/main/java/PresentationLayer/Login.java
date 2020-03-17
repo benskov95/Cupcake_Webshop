@@ -26,7 +26,9 @@ public class Login extends Command {
         HttpSession session = request.getSession();
         ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
+        ArrayList<Cupcake> cupcakes = new ArrayList<>();
 
+        session.setAttribute("cupcakes", cupcakes);
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);
         session.setAttribute( "customer", customer);

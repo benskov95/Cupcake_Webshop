@@ -29,7 +29,7 @@ public class Kurv extends Command {
         try {
             quantity = Integer.parseInt(request.getParameter("quantity"));
         } catch (Exception e) {
-        request.setAttribute("noQuantity", "Du skal lige vælge noget, før du går videre til kurven.");
+        request.setAttribute("noQuantity", "Du skal lige vælge noget, før du går videre.");
         return "start";
     }
 
@@ -57,7 +57,7 @@ public class Kurv extends Command {
 
         HttpSession session = request.getSession();
         int price = (bottomPrice + toppingPrice) * quantity;
-        ArrayList<Cupcake> cupcakes = new ArrayList<>();
+        ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
 
         cupcakes.add(new Cupcake(bottom, topping, quantity, price));
         int total = 0;

@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.Cupcake;
+import FunctionLayer.Customer;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,22 +12,13 @@ import java.util.ArrayList;
 public class Checkout extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        String email = request.getParameter("email");
-        int saldo = Integer.parseInt(request.getParameter("saldo"));
-        String navn = request.getParameter("navn");
 
         HttpSession session = request.getSession();
-        ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
-        int total = 0;
+        Customer customer = (Customer) session.getAttribute("customer");
+        int totalPrice = (int) session.getAttribute("totalPrice");
 
-        for (Cupcake cupcake : cupcakes) {
-            total += cupcake.getCombinedPrice();
-        }
-
-        request.setAttribute("email", email);
-        request.setAttribute("saldo", saldo);
-        request.setAttribute("navn", navn);
-        request.setAttribute("totalPrice", total);
+        int purchase = customer.getCredit() - totalPrice;
+        customer.setCredit(purchase);
 
         return "checkout";
     }

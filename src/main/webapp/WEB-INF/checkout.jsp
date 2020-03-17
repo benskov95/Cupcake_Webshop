@@ -6,7 +6,7 @@
 <title>Checkout</title>
 
 <div style="text-align: center">
-    <h1 class="display-4">Tak for din bestilling ${requestScope.navn}!</h1>
+    <h1 class="display-4">Tak for din bestilling ${sessionScope.navn}!</h1>
     <br>
     <table class="table table-striped">
         <thead class="thead-light">
@@ -27,7 +27,7 @@
         </c:forEach>
     </table>
     <br>
-    <p class="lead" style="font-weight: bold">Samlet pris: ${requestScope.totalPrice} kr</p>
+    <p class="lead" style="font-weight: bold">Samlet pris: ${sessionScope.totalPrice} kr</p>
     <p class="lead">Din ordre forberedes og er snart klar til afhentning.</p>
     <br>
 </div>

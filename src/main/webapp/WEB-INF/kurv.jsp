@@ -28,22 +28,19 @@
             <td>${cupcake.toppingName}</td>
             <td>${cupcake.quantity}</td>
             <td>${cupcake.combinedPrice} kr</td>
+<%--            <td><a href="FrontController?target=redirect&destination=fjerncupcake">Fjern</a></td>--%>
         </tr>
         </c:forEach>
 
     </table>
 
+
     <form action="FrontController" method="post">
         <input type="hidden" name="target" value="checkout">
-        <input type="hidden" name="email" value=${requestScope.email}>
-        <input type="hidden" name="saldo" value=${requestScope.saldo}>
-        <input type="hidden" name="navn" value=${requestScope.navn}>
-        <input type="hidden" name="totalPrice" value=${requestScope.totalPrice}>
-
         <br>
-        <div style="float: right">Samlet pris: ${requestScope.totalPrice} kr</div>
+        <div style="float: right">Samlet pris: ${sessionScope.totalPrice} kr</div>
         <br>
-        <button type="submit" class="btn btn-primary" style="float: right">Til checkout</button>
+        <button type="submit" class="btn btn-primary" style="float: right">Betal</button>
     </form>
 
     <form action="FrontController?target=redirect&destination=start" method="post" style="float: left">

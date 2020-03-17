@@ -2,6 +2,7 @@ package FunctionLayer;
 
 public class Cupcake {
 
+    private int count;
     private String bottomName;
     private String toppingName;
     private int quantity;
@@ -13,6 +14,23 @@ public class Cupcake {
         this.toppingName = toppingName;
         this.quantity = quantity;
         this.combinedPrice = totalPrice;
+    }
+
+    public Cupcake(int count, String bottomName, String toppingName, int quantity, int combinedPrice) {
+        this.count = count;
+        this.bottomName = bottomName;
+        this.toppingName = toppingName;
+        this.quantity = quantity;
+        this.combinedPrice = combinedPrice;
+    }
+
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public String getBottomName() {

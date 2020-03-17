@@ -18,10 +18,6 @@ public class Kurv extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
-        String email = request.getParameter("email");
-        String saldo = request.getParameter("saldo");
-        String navn = request.getParameter("navn");
-
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
         int quantity;
@@ -59,19 +55,22 @@ public class Kurv extends Command {
         int price = (bottomPrice + toppingPrice) * quantity;
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
 
-        cupcakes.add(new Cupcake(bottom, topping, quantity, price));
+        int count = 0;
         int total = 0;
+
+        for (Cupcake cupcake : cupcakes) {
+            count++;
+        }
+
+        cupcakes.add(new Cupcake(count, bottom, topping, quantity, price));
 
         for (Cupcake cupcake : cupcakes) {
             total += cupcake.getCombinedPrice();
         }
 
+        session.setAttribute("count", count); //todo: VIRKER IKKE
         session.setAttribute("cupcakes", cupcakes);
-        request.setAttribute("price", price);
-        request.setAttribute("email", email);
-        request.setAttribute("navn", navn);
-        request.setAttribute("saldo", saldo);
-        request.setAttribute("totalPrice", total);
+        session.setAttribute("totalPrice", total);
         return "kurv";
     }
 }

@@ -12,14 +12,12 @@
 
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="ordrer">
-            <input type="hidden" name="email" value=${requestScope.email}>
             <button type="submit" class="btn btn-primary">Se alle ordrer</button>
             <br>
             <br>
         </form>
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="kunder">
-            <input type="hidden" name="email" value=${requestScope.email}>
             <button type="submit" class="btn btn-primary">Se alle kunder</button>
             <br>
             <br>
@@ -28,7 +26,6 @@
         <form action="FrontController" method="post">
             <input type="hidden" name="target" value="redirect">
             <input type="hidden" name="destination" value="start">
-            <input type="hidden" name="email" value=${requestScope.email}>
             <button type="submit" class="btn btn-primary">Gå til startside</button>
             <br>
             <br>

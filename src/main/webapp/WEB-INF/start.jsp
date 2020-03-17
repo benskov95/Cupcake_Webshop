@@ -15,9 +15,6 @@
 
     <form action="FrontController" method="post">
     <input type="hidden" name="target" value="kurv">
-    <input type="hidden" name="email" value=${sessionScope.customer.email}>
-    <input type="hidden" name="saldo" value=${sessionScope.customer.credit}>
-    <input type="hidden" name="navn" value="${sessionScope.customer.name}">
 
         <div class="row">
             <div class="col">

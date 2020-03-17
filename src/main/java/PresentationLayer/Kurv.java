@@ -26,6 +26,10 @@ public class Kurv extends Command {
         String topping = request.getParameter("topping");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
+        if (topping.equals("Blue")) {
+            topping = "Blue cheese";
+        }
+
         ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
         int bottomPrice = 0;

@@ -15,7 +15,7 @@
 
     <div class="row">
 
-        <div class="col-md">
+        <div class="col">
         </div>
 
         <form action="FrontController" method="post">
@@ -38,7 +38,7 @@
             <br>
         </form>
 
-        <div class="col-md">
+        <div class="col">
         </div>
 
     </div>

@@ -12,7 +12,7 @@
 </head>
 
 <header style="text-align: center">
-    <a href="FrontController?target=redirect&destination=start"><img src="Images/Cupcake%20banner%20final.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
+    <a href="index.jsp"><img src="Images/Cupcake%20banner%20final.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
 </header>
 
 <body background="Images/Cupcake%20baggrund.jpg">
@@ -25,24 +25,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active" style="right: auto">
-                <a class="nav-link" href="FrontController?target=redirect&destination=index">Log ud</a>
-            </li>
-            <li class="nav-item active" style="right: auto">
-                <a class="nav-link" href="index.jsp">Mine ordrer</a>
-            </li>
-            <li class="nav-item active" style="right: auto">
-                <a class="nav-link disabled" href="#">${requestScope.saldo},-</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="FrontController?target=redirect&destination=index">Log ud <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-
         <span class="navbar-text" style="margin-right: 20px">
-            ${requestScope.email}
-            </span>
-        <span>
-                <a href="kurv.jsp"><i class="fa fa-shopping-bag fa-2x"></i></a>
+                ${requestScope.email}
             </span>
     </div>
 </nav>
 
-<div class="jumbotron">
+    <div class="jumbotron">

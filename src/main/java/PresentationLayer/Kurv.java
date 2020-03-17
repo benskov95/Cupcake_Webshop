@@ -24,7 +24,15 @@ public class Kurv extends Command {
 
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int quantity;
+
+        try {
+            quantity = Integer.parseInt(request.getParameter("quantity"));
+        } catch (Exception e) {
+        request.setAttribute("noQuantity", "Du skal lige vælge noget, før du går videre til kurven.");
+        return "start";
+    }
+
 
         if (topping.equals("Blue")) {
             topping = "Blue cheese";

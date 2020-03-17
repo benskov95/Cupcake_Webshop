@@ -10,6 +10,7 @@
     <h1 class="display-4">Opret bruger</h1>
     <p class="lead">Skriv venligst dit navn, en e-mail og vælg en adgangskode for at oprette din konto.</p>
     <br>
+    <p style="color: red">${requestScope.emailFejl}</p>
 
     <div class="row">
 

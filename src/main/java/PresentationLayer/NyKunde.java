@@ -13,6 +13,11 @@ public class NyKunde extends Command {
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
 
+        if (!email.contains("@")) {
+            request.setAttribute("emailFejl", "Du skal bruge en email (@) for at oprette en konto.");
+            return "nykunde";
+        }
+
         LogicFacade.createUser(navn, email, password);
         request.setAttribute("nykunde", "Så er din konto oprettet!\nNu skal du bare logge ind for at bestille.");
         return "index";

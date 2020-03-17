@@ -10,6 +10,7 @@
     <h1 class="display-4">Velkommen ${sessionScope.customer.name}.</h1>
     <p class="lead">Har du en sød tand? Hvis ikke, så får du det, efter du har smagt vores cupcakes!</p>
     <br>
+    <p style="color: red">${requestScope.noQuantity}</p>
     <p class="lead"><em>Bestil her:</em>
 
     <form action="FrontController" method="post">

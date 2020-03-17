@@ -61,6 +61,7 @@ public class CustomerMapper {
                 throw new LoginSampleException( "E-mail eller adgangskode er forkert. Prøv igen." );
             }
         } catch ( SQLException ex ) {
+            ex.printStackTrace();
             throw new LoginSampleException(ex.getMessage());
         }
     }

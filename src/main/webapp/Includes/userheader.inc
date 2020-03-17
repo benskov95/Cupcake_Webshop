@@ -32,12 +32,12 @@
                 <a class="nav-link" href="index.jsp">Mine ordrer</a>
             </li>
             <li class="nav-item active" style="right: auto">
-                <a class="nav-link disabled" href="#">${requestScope.saldo},-</a>
+                <a class="nav-link disabled" href="#">${sessionScope.customer.credit},-</a>
             </li>
         </ul>
 
         <span class="navbar-text" style="margin-right: 20px">
-            ${requestScope.email}
+            ${sessionScope.customer.email}
             </span>
         <span>
                 <a href="kurv.jsp"><i class="fa fa-shopping-bag fa-2x"></i></a>

@@ -19,7 +19,7 @@
         </div>
 
         <form action="FrontController" method="post">
-            <input type="hidden" name="target" value="start">
+            <input type="hidden" name="target" value="login">
 
             <div class="form-group">
                 <label for="email">E-mail:</label>

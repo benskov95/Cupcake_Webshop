@@ -1,9 +1,10 @@
 package PresentationLayer;
 
+import DBAccess.BottomMapper;
 import DBAccess.CustomerMapper;
-import FunctionLayer.LogicFacade;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.Customer;
+import DBAccess.ToppingMapper;
+import FunctionLayer.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,16 +20,24 @@ public class Login extends Command {
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
         String email = request.getParameter( "email" );
-        String password = request.getParameter( "password" );
+        String password = request.getParameter( "pass" );
         Customer customer = LogicFacade.login( email, password );
 
         HttpSession session = request.getSession();
+        ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
+        ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
 
-        session.setAttribute( "user", customer);
+        session.setAttribute("bottoms", bottoms);
+        session.setAttribute("toppings", toppings);
+        session.setAttribute( "customer", customer);
         session.setAttribute( "role", customer.getRole() );
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
-        return customer.getRole() + "page";
+        if (customer.getRole().equals("admin")) {
+            return "adminstart";
+        } else {
+            return "start";
+        }
     }
 
 }

@@ -7,16 +7,16 @@
 <title>Olsker Cupcakes</title>
 
 <div style="text-align: center">
-    <h1 class="display-4">Velkommen ${requestScope.navn}.</h1>
+    <h1 class="display-4">Velkommen ${sessionScope.customer.name}.</h1>
     <p class="lead">Har du en sød tand? Hvis ikke, så får du det, efter du har smagt vores cupcakes!</p>
     <br>
     <p class="lead"><em>Bestil her:</em>
 
     <form action="FrontController" method="post">
     <input type="hidden" name="target" value="kurv">
-    <input type="hidden" name="email" value=${requestScope.email}>
-    <input type="hidden" name="saldo" value=${requestScope.saldo}>
-    <input type="hidden" name="navn" value="${requestScope.navn}">
+    <input type="hidden" name="email" value=${sessionScope.customer.email}>
+    <input type="hidden" name="saldo" value=${sessionScope.customer.credit}>
+    <input type="hidden" name="navn" value="${sessionScope.customer.name}">
 
         <div class="row">
             <div class="col">

@@ -24,13 +24,12 @@ public class Redirect extends Command {
            fjernCupcake.execute(request, response);
 
             destination = "kurv";
-            return destination;
         }
 
-        if (destination.equals("start") && hasPaid) {
+        if (destination.equals("start") && hasPaid || destination.equals("index")) {
             cupcakes.clear();
         }
 
-        return request.getParameter("destination");
+        return destination;
     }
 }

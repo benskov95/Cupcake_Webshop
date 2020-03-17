@@ -13,6 +13,8 @@
     <h1>Bestillinger</h1>
     <br>
 
+    <form action="FrontController" method="post">
+
     <table class="table table-striped">
         <thead class="thead-light">
         <tr>
@@ -23,16 +25,25 @@
         </tr>
         </thead>
         <c:forEach var="cupcake" items="${sessionScope.cupcakes}">
+            <input type="hidden" name="counts" value=${cupcake.count}>
         <tr>
             <td>${cupcake.bottomName}</td>
             <td>${cupcake.toppingName}</td>
             <td>${cupcake.quantity}</td>
             <td>${cupcake.combinedPrice} kr</td>
-<%--            <td><a href="FrontController?target=redirect&destination=fjerncupcake">Fjern</a></td>--%>
+            <td>
+                <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="redirect">
+                <input type="hidden" name="destination" value="fjerncupcake">
+                <input type="hidden" name="cupcakeNumber" value=${cupcake.count}>
+                <button type="submit" class="btn btn-primary" style="float: right">Fjern</button>
+                </form>
+            </td>
         </tr>
         </c:forEach>
 
     </table>
+    </form>
 
 
     <form action="FrontController" method="post">

@@ -55,12 +55,8 @@ public class Kurv extends Command {
         int price = (bottomPrice + toppingPrice) * quantity;
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
 
-        int count = 0;
+        int count = cupcakes.size();
         int total = 0;
-
-        for (Cupcake cupcake : cupcakes) {
-            count++;
-        }
 
         cupcakes.add(new Cupcake(count, bottom, topping, quantity, price));
 
@@ -68,7 +64,7 @@ public class Kurv extends Command {
             total += cupcake.getCombinedPrice();
         }
 
-        session.setAttribute("count", count); //todo: VIRKER IKKE
+        session.setAttribute("count", count);
         session.setAttribute("cupcakes", cupcakes);
         session.setAttribute("totalPrice", total);
         return "kurv";

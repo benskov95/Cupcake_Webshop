@@ -17,6 +17,7 @@ public class Redirect extends Command {
         HttpSession session = request.getSession();
         String destination = request.getParameter("destination");
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
+        int test = (int) session.getAttribute("test");
 
         if (destination.equals("fjerncupcake")) {
            FjernCupcake fjernCupcake = new FjernCupcake();
@@ -26,7 +27,9 @@ public class Redirect extends Command {
             return destination;
         }
 
-        cupcakes.clear();
+        if (destination.equals("start") && test != 0) {
+            cupcakes.clear();
+        }
 
 
         return request.getParameter("destination");

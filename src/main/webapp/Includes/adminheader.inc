@@ -30,7 +30,7 @@
             </li>
         </ul>
         <span class="navbar-text" style="margin-right: 20px">
-                ${requestScope.email}
+                ${sessionScope.customer.email}
             </span>
     </div>
 </nav>

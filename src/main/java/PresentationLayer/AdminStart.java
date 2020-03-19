@@ -11,9 +11,7 @@ import java.util.ArrayList;
 public class AdminStart extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        String email = request.getParameter("email");
-
-        request.setAttribute("email", email);
+        //todo: Lav tilbageknap i adminheaderen, så admin kan komme tilbage til adminsiden. Og refactor jsp siderne, så alt er på engelsk.
         return "adminstart";
     }
 }

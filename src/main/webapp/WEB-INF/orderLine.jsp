@@ -26,7 +26,7 @@
         <thead class="thead-light">
         <tr>
             <th>Orderline ID</th>
-            <th>Order ID</th>
+            <th>Ordre ID</th>
             <th>Kunde ID</th>
             <th>Kundenavn</th>
             <th>Kunde e-mail</th>

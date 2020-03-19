@@ -2,6 +2,7 @@ package PresentationLayer;
 
 import DBAccess.BottomMapper;
 import DBAccess.CustomerMapper;
+import DBAccess.OrderMapper;
 import DBAccess.ToppingMapper;
 import FunctionLayer.*;
 
@@ -22,14 +23,24 @@ public class Login extends Command {
         String email = request.getParameter( "email" );
         String password = request.getParameter( "pass" );
         Customer customer = LogicFacade.login( email, password );
+        String kundebesked = "";
 
         HttpSession session = request.getSession();
         ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
         ArrayList<Cupcake> cupcakes = new ArrayList<>();
+        ArrayList<Order> customerOrders = OrderMapper.getCustomerOrders(customer.getId());
+
+        if (customerOrders.size() > 0) {
+            kundebesked = "Her kan du se alle dine ordrer.";
+        } else {
+            kundebesked = "Du har ingen registrerede ordrer på nuværende tidspunkt.";
+        }
 
         session.setAttribute("hasPaid", false);
+        session.setAttribute("kundebesked", kundebesked);
         session.setAttribute("cupcakes", cupcakes);
+        session.setAttribute("customerOrders", customerOrders);
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);
         session.setAttribute( "customer", customer);

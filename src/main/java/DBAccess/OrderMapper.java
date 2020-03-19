@@ -142,4 +142,44 @@ public class OrderMapper {
         return orders;
     }
 
+    public static ArrayList<Order> getCustomerOrders(int customerId) throws LoginSampleException {
+
+        ArrayList<Order> orders = new ArrayList<>();
+
+        String sql = "select ol.order_id, b.bname, t.tname, ol.quantity, ol.sum, o.order_date  " +
+                "from cupcakeshop.order o " +
+                "inner join orderline ol " +
+                "on ol.order_id = o.order_id " +
+                "inner join customer c " +
+                "on o.customer_id = c.customer_id " +
+                "inner join bottom b " +
+                "on ol.bottom_id = b.bottom_id " +
+                "inner join topping t " +
+                "on ol.topping_id = t.topping_id " +
+                "where c.customer_id = ?";
+
+        Connection con = Connector.connection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, customerId);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int orderId = resultSet.getInt("order_id");
+                String bname = resultSet.getString("bname");
+                String tname = resultSet.getString("tname");
+                int quantity = resultSet.getInt("quantity");
+                int price = resultSet.getInt("sum");
+                String date = resultSet.getString("order_date");
+
+                Order order = new Order(orderId, bname, tname, quantity, price, date);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection error");
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
 }

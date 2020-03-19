@@ -29,7 +29,7 @@
                 <a class="nav-link" href="FrontController?target=redirect&destination=index">Log ud</a>
             </li>
             <li class="nav-item active" style="right: auto">
-                <a class="nav-link" href="index.jsp">Mine ordrer</a>
+                <a class="nav-link" href="FrontController?target=redirect&destination=mineordrer">Mine ordrer</a>
             </li>
             <li class="nav-item active" style="right: auto">
                 <a class="nav-link disabled" href="#">${sessionScope.customer.credit},-</a>

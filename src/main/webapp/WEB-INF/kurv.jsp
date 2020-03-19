@@ -3,7 +3,6 @@
 <%@include file="../Includes/userheader.inc"%>
 
 
-
 <title>Kurv</title>
 
 <p class="lead">Her kan du se din kurvs indhold.</p>

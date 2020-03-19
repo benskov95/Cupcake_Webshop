@@ -26,24 +26,20 @@
             <th>Kunde ID</th>
             <th>Kundenavn</th>
             <th>Kunde e-mail</th>
+            <th>Saldo</th>
             <th>Antal ordrer</th>
-            <th>Oprettelsesdato</th>
         </tr>
         </thead>
+
+        <c:forEach var="customer" items="${sessionScope.customers}">
         <tr>
-            <td>1</td>
-            <td>Hans</td>
-            <td>hansERIK@coolmail.com</td>
-            <td>1</td>
-            <td>03-03-2020</td>
+            <td>${customer.id}</td>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.credit}</td>
+            <td>${customer.numberOfOrders}</td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Mia</td>
-            <td>mia-h@gmail.com</td>
-            <td>1</td>
-            <td>07-03-2020</td>
-        </tr>
+        </c:forEach>
 
     </table>
 

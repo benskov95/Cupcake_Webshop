@@ -77,4 +77,28 @@ public class OrderMapper {
         }
         return newId;
     }
+
+    public static int getOrdersById(int customerId) throws LoginSampleException {
+
+        int count = 0;
+
+        String sql = "select * from cupcakeshop.order where customer_id = ?";
+        Connection con = Connector.connection();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, customerId);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                count++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Connection error");
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }

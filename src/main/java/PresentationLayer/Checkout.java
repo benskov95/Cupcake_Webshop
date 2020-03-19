@@ -24,13 +24,13 @@ public class Checkout extends Command {
 
         for (Cupcake cupcake : cupcakes) {
 
-//            OrderMapper.addOrder(customer.getId());
-//            int orderId = OrderMapper.getOrderId(customer.getId());
-//
-//            toppingId = getToppingId(cupcake.getToppingName());
-//            bottomId = getBottomId(cupcake.getBottomName());
-//
-//            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+            OrderMapper.addOrder(customer.getId());
+            int orderId = OrderMapper.getOrderId(customer.getId());
+
+            toppingId = getToppingId(cupcake.getToppingName());
+            bottomId = getBottomId(cupcake.getBottomName());
+
+            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
         }
 
         int totalPrice = (int) session.getAttribute("totalPrice");

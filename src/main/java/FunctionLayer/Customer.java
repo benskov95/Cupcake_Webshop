@@ -26,6 +26,7 @@ public class Customer {
     private String password; // Should be hashed and secured
     private String role;
     private int credit;
+    private int numberOfOrders;
 
     public String getEmail() {
         return email;
@@ -73,5 +74,13 @@ public class Customer {
 
     public void setCredit(int credit) {
         this.credit = credit;
+    }
+
+    public int getNumberOfOrders() {
+        return numberOfOrders;
+    }
+
+    public void setNumberOfOrders(int numberOfOrders) {
+        this.numberOfOrders = numberOfOrders;
     }
 }

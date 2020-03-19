@@ -33,8 +33,6 @@ public class Login extends Command {
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);
         session.setAttribute( "customer", customer);
-        session.setAttribute( "role", customer.getRole() );
-        session.setAttribute("navn", customer.getName());
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
         if (customer.getRole().equals("admin")) {

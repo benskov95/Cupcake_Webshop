@@ -6,7 +6,7 @@
 <title>Checkout</title>
 
 <div style="text-align: center">
-    <h1 class="display-4">Tak for din bestilling ${sessionScope.navn}!</h1>
+    <h1 class="display-4">Tak for din bestilling!</h1>
     <br>
     <table class="table table-striped">
         <thead class="thead-light">

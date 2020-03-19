@@ -93,4 +93,21 @@ public class CustomerMapper {
         return customers;
     }
 
+    public static void pay(int newCredit, int customerId) throws LoginSampleException {
+
+        String sql = "update customer set credit = ? where customer_id =  ?";
+        Connection con = Connector.connection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, newCredit);
+            ps.setInt(2, customerId);
+            ps.executeUpdate();
+
+            } catch (SQLException e) {
+            System.out.println("Connection error");
+            e.printStackTrace();
+        }
+
+    }
+
 }

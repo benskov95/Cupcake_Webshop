@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import DBAccess.BottomMapper;
+import DBAccess.CustomerMapper;
 import DBAccess.OrderMapper;
 import DBAccess.ToppingMapper;
 import FunctionLayer.*;
@@ -21,21 +22,21 @@ public class Checkout extends Command {
         int toppingId;
         int bottomId;
 
-        int totalPrice = (int) session.getAttribute("totalPrice");
-
-
         for (Cupcake cupcake : cupcakes) {
 
-            OrderMapper.addOrder(customer.getId());
-            int orderId = OrderMapper.getOrderId(customer.getId());
-
-            toppingId = getToppingId(cupcake.getToppingName());
-            bottomId = getBottomId(cupcake.getBottomName());
-
-            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+//            OrderMapper.addOrder(customer.getId());
+//            int orderId = OrderMapper.getOrderId(customer.getId());
+//
+//            toppingId = getToppingId(cupcake.getToppingName());
+//            bottomId = getBottomId(cupcake.getBottomName());
+//
+//            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
         }
 
+        int totalPrice = (int) session.getAttribute("totalPrice");
         int purchase = customer.getCredit() - totalPrice;
+        CustomerMapper.pay(purchase, customer.getId());
+
         customer.setCredit(purchase);
         session.setAttribute("hasPaid", true);
 

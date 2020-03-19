@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../Includes/userheader.inc"%>
 
-
 <title>Kurv</title>
 
 <p class="lead">Her kan du se din kurvs indhold.</p>
@@ -35,7 +34,7 @@
                 <input type="hidden" name="target" value="redirect">
                 <input type="hidden" name="destination" value="fjerncupcake">
                 <input type="hidden" name="cupcakeNumber" value=${cupcake.count}>
-                <button type="submit" class="btn btn-primary" style="float: right">Fjern</button>
+                <button type="submit" class="btn btn-danger" style="float: right">Fjern</button>
                 </form>
             </td>
         </tr>

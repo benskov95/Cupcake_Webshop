@@ -18,6 +18,7 @@ abstract class Command {
         commands.put("checkout", new Checkout());
         commands.put("adminstart", new AdminStart());
         commands.put("kunder", new Kunder());
+        commands.put("orderLine", new OrderLine());
         commands.put("fjerncupcake", new FjernCupcake());
     }
 

@@ -3,19 +3,21 @@
 <%@include file="../Includes/header.inc"%>
 
 
-<title>Kunder</title>
+<title>Ordrer</title>
 
-<p class="lead">Alle registrerede kunder kan ses her.</p>
+<p class="lead">Alle registrerede ordrer kan ses her.</p>
 
 <div class="jumbotron">
 
-    <h1>Kunder</h1>
+    <h1>Bestillinger</h1>
     <br>
 
     <div>
         <select>
             <option selected="selected" disabled="disabled">Sorter...</option>
             <option value="alfabetisk">Sorter alfabetisk efter kundenavn</option>
+            <option value="kunde_id">Sorter efter kunde ID</option>
+            <option value="antal">Sorter efter antal</option>
         </select>
     </div>
     <br>
@@ -23,21 +25,31 @@
     <table class="table table-striped">
         <thead class="thead-light">
         <tr>
+            <th>Orderline ID</th>
+            <th>Order ID</th>
             <th>Kunde ID</th>
             <th>Kundenavn</th>
             <th>Kunde e-mail</th>
-            <th>Saldo</th>
-            <th>Antal ordrer</th>
+            <th>Bund</th>
+            <th>Topping</th>
+            <th>Antal</th>
+            <th>Pris</th>
+            <th>Dato</th>
         </tr>
         </thead>
 
-        <c:forEach var="customer" items="${sessionScope.customers}">
+        <c:forEach var="order" items="${sessionScope.orders}">
         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
-            <td>${customer.email}</td>
-            <td>${customer.credit}</td>
-            <td>${customer.numberOfOrders}</td>
+            <td>${order.orderLineId}</td>
+            <td>${order.orderId}</td>
+            <td>${order.customerId}</td>
+            <td>${order.customerName}</td>
+            <td>${order.email}</td>
+            <td>${order.bottomName}</td>
+            <td>${order.toppingName}</td>
+            <td>${order.quantity}</td>
+            <td>${order.price},-</td>
+            <td>${order.date}</td>
         </tr>
         </c:forEach>
 

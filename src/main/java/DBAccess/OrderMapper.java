@@ -1,11 +1,10 @@
 package DBAccess;
 
-import FunctionLayer.Bottom;
+import FunctionLayer.Order;
 import FunctionLayer.LoginSampleException;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class OrderMapper {
 
@@ -99,6 +98,48 @@ public class OrderMapper {
             e.printStackTrace();
         }
         return count;
+    }
+
+    public static ArrayList<Order> getAllOrders() throws LoginSampleException {
+
+        ArrayList<Order> orders = new ArrayList<>();
+
+        String sql = "select ol.orderline_id, ol.order_id, o.customer_id, c.name, " +
+                "c.email, b.bname, t.tname, ol.quantity, ol.sum, o.order_date " +
+                "from cupcakeshop.order o " +
+                "inner join orderline ol " +
+                "on ol.order_id = o.order_id " +
+                "inner join customer c " +
+                "on o.customer_id = c.customer_id " +
+                "inner join bottom b " +
+                "on ol.bottom_id = b.bottom_id " +
+                "inner join topping t " +
+                "on ol.topping_id = t.topping_id";
+
+        Connection con = Connector.connection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int orderLineId = resultSet.getInt("orderline_id");
+                int orderId = resultSet.getInt("order_id");
+                int customerId = resultSet.getInt("customer_id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String bname = resultSet.getString("bname");
+                String tname = resultSet.getString("tname");
+                int quantity = resultSet.getInt("quantity");
+                int price = resultSet.getInt("sum");
+                String date = resultSet.getString("order_date");
+
+                Order order = new Order(orderLineId, orderId, customerId, name, email, bname, tname, quantity, price, date);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection error");
+            e.printStackTrace();
+        }
+        return orders;
     }
 
 }

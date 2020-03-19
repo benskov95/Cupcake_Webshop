@@ -25,7 +25,7 @@ public class Kunder extends Command {
 
         session.setAttribute("numberOfOrders", customerOrderNumbers);
         session.setAttribute("customers", customers);
-        
+
         return "kunder";
     }
 }

@@ -34,7 +34,7 @@
             <td>
                 <form action="FrontController" method="post">
                 <input type="hidden" name="target" value="redirect">
-                <input type="hidden" name="destination" value="fjerncupcake">
+                <input type="hidden" name="destination" value="removecupcake">
                 <input type="hidden" name="cupcakeNumber" value=${cupcake.count}>
                 <button type="submit" class="btn btn-danger" style="float: right">Fjern</button>
                 </form>

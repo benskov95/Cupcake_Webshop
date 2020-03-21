@@ -19,7 +19,7 @@ abstract class Command {
         commands.put("adminstart", new AdminStart());
         commands.put("customers", new Customers());
         commands.put("orderline", new OrderLine());
-        commands.put("fjerncupcake", new FjernCupcake());
+        commands.put("removecupcake", new RemoveCupcake());
         commands.put("deleteorder", new DeleteOrder());
         commands.put("findcustomer", new FindCustomer());
     }

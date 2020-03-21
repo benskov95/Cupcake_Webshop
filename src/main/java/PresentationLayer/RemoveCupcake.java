@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-public class FjernCupcake extends Command {
+public class RemoveCupcake extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -32,6 +32,6 @@ public class FjernCupcake extends Command {
         }
 
         session.setAttribute("totalPrice", totalPrice);
-        return "fjerncupcake";
+        return "removecupcake";
     }
 }

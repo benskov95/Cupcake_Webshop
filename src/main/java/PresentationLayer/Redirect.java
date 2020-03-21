@@ -35,9 +35,9 @@ public class Redirect extends Command {
             kundebesked = "Du har ingen registrerede ordrer på nuværende tidspunkt.";
         }
 
-        if (destination.equals("fjerncupcake")) {
-           FjernCupcake fjernCupcake = new FjernCupcake();
-           fjernCupcake.execute(request, response);
+        if (destination.equals("removecupcake")) {
+           RemoveCupcake removeCupcake = new RemoveCupcake();
+           removeCupcake.execute(request, response);
 
             destination = "cart";
         }

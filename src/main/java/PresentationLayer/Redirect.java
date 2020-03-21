@@ -57,7 +57,7 @@ public class Redirect extends Command {
             String result = findCustomer.execute(request, response);
 
             request.setAttribute("result", result);
-            destination = "kunder";
+            destination = "customers";
         }
 
         if (destination.equals("addmoney")) {

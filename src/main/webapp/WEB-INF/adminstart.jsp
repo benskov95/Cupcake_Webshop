@@ -17,7 +17,7 @@
             <br>
         </form>
         <form action="FrontController" method="post">
-            <input type="hidden" name="target" value="kunder">
+            <input type="hidden" name="target" value="customers">
             <button type="submit" class="btn btn-primary">Se alle kunder</button>
             <br>
             <br>

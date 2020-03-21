@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-public class Kunder extends Command {
+public class Customers extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -26,6 +26,6 @@ public class Kunder extends Command {
         session.setAttribute("numberOfOrders", customerOrderNumbers);
         session.setAttribute("customers", customers);
 
-        return "kunder";
+        return "customers";
     }
 }

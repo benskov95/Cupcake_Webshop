@@ -24,7 +24,7 @@
             <label for="deleteOrder">Slet ordre (indtast ordre ID):</label>
             <input type="text" class="form-control" id="deleteOrder" name="deleteOrder">
         </div>
-           <p style="color:blue;">${sessionScope.delete}</p>
+           <p style="color:blue;">${requestScope.delete}</p>
            <button type="submit" class="btn btn-primary">Slet</button>
            </div>
 

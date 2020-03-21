@@ -34,7 +34,7 @@ public class Redirect extends Command {
             String delete = deleteOrder.execute(request, response);
             ArrayList<Order> orders = OrderMapper.getAllOrders();
 
-            session.setAttribute("delete", delete);
+            request.setAttribute("delete", delete);
             session.setAttribute("orders", orders);
             destination = "orderLine";
         }
@@ -43,8 +43,25 @@ public class Redirect extends Command {
             FindCustomer findCustomer = new FindCustomer();
             String result = findCustomer.execute(request, response);
 
-            session.setAttribute("result", result);
+            request.setAttribute("result", result);
             destination = "kunder";
+        }
+
+        if (destination.equals("addmoney")) {
+            String confirm = request.getParameter("money");
+            String msg = "";
+            Customer customer = (Customer) session.getAttribute("customer");
+
+            if (confirm.equalsIgnoreCase("cupcakes")) {
+                customer.restoreCredit();
+                CustomerMapper.updateCustomer(customer);
+                msg = "Korrekt! Din saldo er nu opdateret. Køb løs!";
+            } else {
+                msg = "Forkert. Svaret er ellers åbenlyst.";
+            }
+
+            request.setAttribute("confirm", msg);
+            destination = "mineordrer";
         }
 
         if (destination.equals("start") && hasPaid || destination.equals("index")) {

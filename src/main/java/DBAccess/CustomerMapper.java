@@ -73,8 +73,6 @@ public class CustomerMapper {
                 int id = resultSet.getInt("customer_id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
-                String password = resultSet.getString("password");
-                String role = resultSet.getString("role");
                 int credit = resultSet.getInt("credit");
 
                 Customer customer = new Customer(id, name, email, credit);
@@ -87,14 +85,15 @@ public class CustomerMapper {
         return customers;
     }
 
-    public static void pay(int newCredit, int customerId) throws LoginSampleException {
+    public static void pay(int newCredit, Customer customer) throws LoginSampleException {
 
         String sql = "update customer set credit = ? where customer_id =  ?";
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, newCredit);
-            ps.setInt(2, customerId);
+            ps.setInt(2, customer.getId());
+            customer.setCredit(newCredit);
             ps.executeUpdate();
 
             } catch (SQLException e) {
@@ -126,5 +125,23 @@ public class CustomerMapper {
         }
         return customers;
     }
+
+    public static void updateCustomer(Customer customer) throws LoginSampleException {
+        String sql = "update customer set credit = ? where customer_id = ?";
+        Connection con = Connector.connection();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, customer.getCredit());
+            ps.setInt(2, customer.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 }

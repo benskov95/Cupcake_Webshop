@@ -5,11 +5,13 @@
 <title>Kurv</title>
 
 <p class="lead">Her kan du se din kurvs indhold.</p>
+<p style="color: red">${requestScope.insufficientFunds}<br>${requestScope.insufficientFundsTwo}</p>
 
 <div class="jumbotron">
 
     <h1>Bestillinger</h1>
     <br>
+
 
     <form action="FrontController" method="post">
 

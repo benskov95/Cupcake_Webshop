@@ -18,7 +18,6 @@ public class OrderLine extends Command{
         ArrayList<Order> orders = OrderMapper.getAllOrders();
 
         session.setAttribute("orders", orders);
-        session.setAttribute("delete", "");
         return "orderLine";
     }
 }

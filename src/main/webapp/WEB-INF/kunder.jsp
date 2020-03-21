@@ -24,7 +24,7 @@
                     <label for="findcustomer">Søg efter kunde (ID):</label>
                     <input type="text" class="form-control" id="findcustomer" name="findcustomer">
                 </div>
-                <p style="color:blue;">${sessionScope.result}</p>
+                <p style="color:blue;">${requestScope.result}</p>
                 <button type="submit" class="btn btn-primary">Søg</button>
             </div>
 

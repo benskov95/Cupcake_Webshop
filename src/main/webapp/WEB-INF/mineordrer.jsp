@@ -5,6 +5,7 @@
 <title>Mine ordrer</title>
 
     <p class="lead">${sessionScope.kundebesked}</p>
+    <p style="color: blue">${requestScope.confirm}</p>
 
     <div class="jumbotron">
 
@@ -40,6 +41,32 @@
         <div style="float: right"></div>
         <br>
         <a href="FrontController?target=redirect&destination=start" data-toggle="tooltip" title="Tilbage til forsiden"><i class="fa fa-arrow-circle-left fa-2x" style="float: right"></i></a>
-    </div>
+
+        <button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#myModal">Jeg mangler penge</button>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <br>
+<%--                        <h4 class="modal-title">Hej</h4>--%>
+                    </div>
+                    <div class="modal-body">
+                        <form action="FrontController" method="post">
+                            <input type="hidden" name="target" value="redirect">
+                            <input type="hidden" name="destination" value="addmoney">
+                            <div class="form-group">
+                                <label for="money">Hvad smager godt?</label>
+                                <input type="text" class="form-control" id="money" name="money">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Prøv</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
 <%@include file="../Includes/footer.inc"%>

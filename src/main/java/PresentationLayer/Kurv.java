@@ -2,10 +2,7 @@ package PresentationLayer;
 
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
-import FunctionLayer.Bottom;
-import FunctionLayer.Cupcake;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.Topping;
+import FunctionLayer.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +15,8 @@ public class Kurv extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
+        HttpSession session = request.getSession();
+        ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
         String bottom = request.getParameter("bottom");
         String topping = request.getParameter("topping");
         int quantity;
@@ -51,9 +50,7 @@ public class Kurv extends Command {
             }
         }
 
-        HttpSession session = request.getSession();
         int price = (bottomPrice + toppingPrice) * quantity;
-        ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
 
         int count = cupcakes.size();
         int total = 0;
@@ -67,6 +64,7 @@ public class Kurv extends Command {
         session.setAttribute("count", count);
         session.setAttribute("cupcakes", cupcakes);
         session.setAttribute("totalPrice", total);
+
         return "kurv";
     }
 }

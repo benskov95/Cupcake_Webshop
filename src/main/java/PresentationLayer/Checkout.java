@@ -19,26 +19,30 @@ public class Checkout extends Command {
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
+        int totalPrice = (int) session.getAttribute("totalPrice");
         int toppingId;
         int bottomId;
 
-        for (Cupcake cupcake : cupcakes) {
+        if (customer.getCredit() < totalPrice) {
+            request.setAttribute("insufficientFunds", "Du har ikke nok penge til at foretage dette køb.");
+            request.setAttribute("insufficientFundsTwo", "Gå ind på \"Mine order\" for at få flere.");
+            return "kurv";
+        } else {
+            int purchase = customer.getCredit() - totalPrice;
+            CustomerMapper.pay(purchase, customer);
+            session.setAttribute("hasPaid", true);
 
-            OrderMapper.addOrder(customer.getId());
-            int orderId = OrderMapper.getOrderId(customer.getId());
+            for (Cupcake cupcake : cupcakes) {
 
-            toppingId = getToppingId(cupcake.getToppingName());
-            bottomId = getBottomId(cupcake.getBottomName());
+                OrderMapper.addOrder(customer.getId());
+                int orderId = OrderMapper.getOrderId(customer.getId());
 
-            OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+                toppingId = getToppingId(cupcake.getToppingName());
+                bottomId = getBottomId(cupcake.getBottomName());
+
+                OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+            }
         }
-
-        int totalPrice = (int) session.getAttribute("totalPrice");
-        int purchase = customer.getCredit() - totalPrice;
-        CustomerMapper.pay(purchase, customer.getId());
-
-        customer.setCredit(purchase);
-        session.setAttribute("hasPaid", true);
 
         return "checkout";
     }

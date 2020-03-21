@@ -83,4 +83,8 @@ public class Customer {
     public void setNumberOfOrders(int numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
+
+    public void restoreCredit() {
+        this.credit = 500;
+    }
 }

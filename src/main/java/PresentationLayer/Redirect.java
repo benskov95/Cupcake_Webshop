@@ -39,7 +39,7 @@ public class Redirect extends Command {
            FjernCupcake fjernCupcake = new FjernCupcake();
            fjernCupcake.execute(request, response);
 
-            destination = "kurv";
+            destination = "cart";
         }
 
         if (destination.equals("deleteorder")) {

@@ -14,7 +14,7 @@
     <p class="lead"><em>Bestil her:</em>
 
     <form action="FrontController" method="post">
-    <input type="hidden" name="target" value="kurv">
+    <input type="hidden" name="target" value="cart">
 
         <div class="row">
             <div class="col">

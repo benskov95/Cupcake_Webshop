@@ -40,7 +40,7 @@
             ${sessionScope.customer.email}
             </span>
         <span>
-                <a href="FrontController?target=redirect&destination=kurv"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                <a href="FrontController?target=redirect&destination=cart"><i class="fa fa-shopping-cart fa-2x"></i></a>
             </span>
     </div>
 </nav>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-public class Kurv extends Command {
+public class Cart extends Command {
 
 
     @Override
@@ -65,6 +65,6 @@ public class Kurv extends Command {
         session.setAttribute("cupcakes", cupcakes);
         session.setAttribute("totalPrice", total);
 
-        return "kurv";
+        return "cart";
     }
 }

@@ -132,6 +132,39 @@ public class OrderMapper {
         return orders;
     }
 
+    public static ArrayList<Order> getSpecificOrders(int id) throws LoginSampleException {
+
+        ArrayList<Order> orders = new ArrayList<>();
+
+        String sql = "select * from customer_view where customer_id = ? order by orderline_id asc";
+
+        Connection con = Connector.connection();
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int orderLineId = resultSet.getInt("orderline_id");
+                int orderId = resultSet.getInt("order_id");
+                int customerId = resultSet.getInt("customer_id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String bname = resultSet.getString("bname");
+                String tname = resultSet.getString("tname");
+                int quantity = resultSet.getInt("quantity");
+                int price = resultSet.getInt("sum");
+                String date = resultSet.getString("order_date");
+
+                Order order = new Order(orderLineId, orderId, customerId, name, email, bname, tname, quantity, price, date);
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            System.out.println("Connection error");
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
     public static ArrayList<Order> getCustomerOrders(int customerId) throws LoginSampleException {
 
         ArrayList<Order> orders = new ArrayList<>();

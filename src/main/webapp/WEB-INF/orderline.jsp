@@ -12,27 +12,56 @@
     <h1>Bestillinger</h1>
     <br>
 
-    <form action="FrontController" method="post">
-        <input type="hidden" name="target" value="redirect">
-        <input type="hidden" name="destination" value="deleteorder">
+    <div class="row">
 
-       <div class="row">
 
-           <div class="col-xs-2">
+            <form action="FrontController" method="post">
+                <input type="hidden" name="target" value="redirect">
+                <input type="hidden" name="destination" value="getCustomerOrders">
 
-        <div class="form-group">
-            <label for="deleteOrder">Slet ordre (indtast ordre ID):</label>
-            <input type="text" class="form-control" id="deleteOrder" name="deleteOrder">
+                <div class="row">
+
+                    <div class="col-xs-2">
+
+                        <div class="form-group">
+                            <label for="getCustomerOrders">Søg efter ordrer (Kunde ID):</label>
+                            <input type="text" class="form-control" id="getCustomerOrders" name="getCustomerOrders">
+                        </div>
+                        <p style="color:blue;">${requestScope.result}</p>
+                        <button type="submit" class="btn btn-primary">Søg</button>
+                    </div>
+
+                    <div class="col">
+                    </div>
+
+                </div>
+            </form>
+
+        <div class="col-md-1">
         </div>
-           <p style="color:blue;">${requestScope.delete}</p>
-           <button type="submit" class="btn btn-primary">Slet</button>
-           </div>
 
-           <div class="col">
-           </div>
+        <form action="FrontController" method="post">
+            <input type="hidden" name="target" value="redirect">
+            <input type="hidden" name="destination" value="deleteorder">
 
-       </div>
-    </form>
+            <div class="row">
+
+                <div class="col-xs-2">
+
+                    <div class="form-group">
+                        <label for="deleteOrder">Slet ordre (indtast ordre ID):</label>
+                        <input type="text" class="form-control" id="deleteOrder" name="deleteOrder">
+                    </div>
+                    <p style="color:blue;">${requestScope.delete}</p>
+                    <button type="submit" class="btn btn-primary">Slet</button>
+                </div>
+
+                <div class="col">
+                </div>
+
+            </div>
+        </form>
+    </div>
 
     <br>
 
@@ -42,8 +71,6 @@
             <th>Orderline ID</th>
             <th>Ordre ID</th>
             <th>Kunde ID</th>
-            <th>Kundenavn</th>
-            <th>Kunde e-mail</th>
             <th>Bund</th>
             <th>Topping</th>
             <th>Antal</th>
@@ -57,8 +84,6 @@
             <td>${order.orderLineId}</td>
             <td>${order.orderId}</td>
             <td>${order.customerId}</td>
-            <td>${order.customerName}</td>
-            <td>${order.email}</td>
             <td>${order.bottomName}</td>
             <td>${order.toppingName}</td>
             <td>${order.quantity}</td>

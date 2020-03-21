@@ -52,6 +52,23 @@ public class Redirect extends Command {
             destination = "orderline";
         }
 
+        if (destination.equals("getCustomerOrders")) {
+
+            try {
+                int id = Integer.parseInt(request.getParameter("getCustomerOrders"));
+                ArrayList<Order> getCustomerOrders = OrderMapper.getSpecificOrders(id);
+
+                if (getCustomerOrders.size() == 0) {
+                    request.setAttribute("result", "Denne kunde har ikke lavet nogen ordrer endnu.");
+
+                }
+                session.setAttribute("orders", getCustomerOrders);
+            } catch (Exception e) {
+                request.setAttribute("result", "Du skal skrive et tal.");
+            }
+            destination = "orderline";
+        }
+
         if (destination.equals("findcustomer")) {
             FindCustomer findCustomer = new FindCustomer();
             String result = findCustomer.execute(request, response);

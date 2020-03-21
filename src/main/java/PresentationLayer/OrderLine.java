@@ -18,6 +18,6 @@ public class OrderLine extends Command{
         ArrayList<Order> orders = OrderMapper.getAllOrders();
 
         session.setAttribute("orders", orders);
-        return "orderLine";
+        return "orderline";
     }
 }

@@ -49,7 +49,7 @@ public class Redirect extends Command {
 
             request.setAttribute("delete", delete);
             session.setAttribute("orders", orders);
-            destination = "orderLine";
+            destination = "orderline";
         }
 
         if (destination.equals("findcustomer")) {

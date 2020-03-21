@@ -11,7 +11,7 @@
         <br>
 
         <form action="FrontController" method="post">
-            <input type="hidden" name="target" value="orderLine">
+            <input type="hidden" name="target" value="orderline">
             <button type="submit" class="btn btn-primary">Se alle ordrer</button>
             <br>
             <br>

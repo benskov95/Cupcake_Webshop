@@ -6,7 +6,7 @@
 
 
     <div style="text-align: center">
-        <h1 class="display-4">Velkommen admin.</h1>
+        <h1 class="display-4">Velkommen til adminsiden.</h1>
         <p class="lead">Her kan du kigge på ordrer og kunder i systemet.</p>
         <br>
 

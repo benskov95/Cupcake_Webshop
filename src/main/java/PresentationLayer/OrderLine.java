@@ -16,8 +16,9 @@ public class OrderLine extends Command{
 
         HttpSession session = request.getSession();
         ArrayList<Order> orders = OrderMapper.getAllOrders();
-        session.setAttribute("orders", orders);
 
+        session.setAttribute("orders", orders);
+        session.setAttribute("delete", "");
         return "orderLine";
     }
 }

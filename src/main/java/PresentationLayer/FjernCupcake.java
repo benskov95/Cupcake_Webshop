@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class FjernCupcake extends Command {
 
-
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
 
@@ -31,8 +30,6 @@ public class FjernCupcake extends Command {
                 cupcake.setCount(0);
             }
         }
-
-        //todo: skal måske ændre "fjern" knappen til et kryds eller lignende.
 
         session.setAttribute("totalPrice", totalPrice);
         return "fjerncupcake";

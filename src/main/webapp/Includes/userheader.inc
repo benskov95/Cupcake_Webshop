@@ -12,7 +12,7 @@
 </head>
 
 <header style="text-align: center">
-    <a href="FrontController?target=redirect&destination=start"><img src="Images/Cupcake%20banner%20final.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
+    <a href=${sessionScope.ref}><img src="Images/Cupcake%20banner%20final.PNG" class="img-fluid" title="Olsker Cupcakes" alt="Olsker Cupcakes" style="width: 75%"></a>
 </header>
 
 <body background="Images/Cupcake%20baggrund.jpg">

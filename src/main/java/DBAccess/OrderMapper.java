@@ -104,17 +104,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select ol.orderline_id, ol.order_id, o.customer_id, c.name, " +
-                "c.email, b.bname, t.tname, ol.quantity, ol.sum, o.order_date " +
-                "from cupcakeshop.order o " +
-                "inner join orderline ol " +
-                "on ol.order_id = o.order_id " +
-                "inner join customer c " +
-                "on o.customer_id = c.customer_id " +
-                "inner join bottom b " +
-                "on ol.bottom_id = b.bottom_id " +
-                "inner join topping t " +
-                "on ol.topping_id = t.topping_id";
+        String sql = "select * from customer_view";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -146,17 +136,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select ol.order_id, b.bname, t.tname, ol.quantity, ol.sum, o.order_date  " +
-                "from cupcakeshop.order o " +
-                "inner join orderline ol " +
-                "on ol.order_id = o.order_id " +
-                "inner join customer c " +
-                "on o.customer_id = c.customer_id " +
-                "inner join bottom b " +
-                "on ol.bottom_id = b.bottom_id " +
-                "inner join topping t " +
-                "on ol.topping_id = t.topping_id " +
-                "where c.customer_id = ?";
+        String sql = "select * from customer_view where customer_id = ?";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -180,6 +160,38 @@ public class OrderMapper {
             e.printStackTrace();
         }
         return orders;
+    }
+
+    public static int deleteOrderLine(int id) throws LoginSampleException {
+        int result = 0;
+        String sql = "delete from orderLine where order_id = ?";
+        Connection con = Connector.connection();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            result = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static int deleteOrder(int id) throws LoginSampleException {
+        int result = 0;
+        String sql = "delete from cupcakeshop.order where order_id = ?";
+        Connection con = Connector.connection();
+
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            result = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Fejl i connection til database");
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

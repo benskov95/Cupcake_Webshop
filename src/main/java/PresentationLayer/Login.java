@@ -47,8 +47,10 @@ public class Login extends Command {
         session.setAttribute("email", email);  // ellers skal man skrive  user.email på jsp siderne og det er sgu lidt mærkeligt at man har adgang til private felter. Men måske er det meget fedt , jeg ved det ikke
 
         if (customer.getRole().equals("admin")) {
+            session.setAttribute("ref", "FrontController?target=redirect&destination=adminstart");
             return "adminstart";
         } else {
+            session.setAttribute("ref", "FrontController?target=redirect&destination=start");
             return "start";
         }
     }

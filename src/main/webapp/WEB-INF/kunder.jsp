@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../Includes/header.inc"%>
+<%@include file="../Includes/adminheader.inc"%>
 
 
 <title>Kunder</title>
@@ -12,12 +12,28 @@
     <h1>Kunder</h1>
     <br>
 
-    <div>
-        <select>
-            <option selected="selected" disabled="disabled">Sorter...</option>
-            <option value="alfabetisk">Sorter alfabetisk efter kundenavn</option>
-        </select>
-    </div>
+    <form action="FrontController" method="post">
+        <input type="hidden" name="target" value="redirect">
+        <input type="hidden" name="destination" value="findcustomer">
+
+        <div class="row">
+
+            <div class="col-xs-2">
+
+                <div class="form-group">
+                    <label for="findcustomer">Søg efter kunde (ID):</label>
+                    <input type="text" class="form-control" id="findcustomer" name="findcustomer">
+                </div>
+                <p style="color:blue;">${sessionScope.result}</p>
+                <button type="submit" class="btn btn-primary">Søg</button>
+            </div>
+
+            <div class="col">
+            </div>
+
+        </div>
+    </form>
+
     <br>
 
     <table class="table table-striped">

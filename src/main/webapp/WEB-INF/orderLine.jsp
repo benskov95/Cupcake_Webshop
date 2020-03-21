@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="../Includes/header.inc"%>
+<%@include file="../Includes/adminheader.inc"%>
 
 
 <title>Ordrer</title>
@@ -12,14 +12,28 @@
     <h1>Bestillinger</h1>
     <br>
 
-    <div>
-        <select>
-            <option selected="selected" disabled="disabled">Sorter...</option>
-            <option value="alfabetisk">Sorter alfabetisk efter kundenavn</option>
-            <option value="kunde_id">Sorter efter kunde ID</option>
-            <option value="antal">Sorter efter antal</option>
-        </select>
-    </div>
+    <form action="FrontController" method="post">
+        <input type="hidden" name="target" value="redirect">
+        <input type="hidden" name="destination" value="deleteorder">
+
+       <div class="row">
+
+           <div class="col-xs-2">
+
+        <div class="form-group">
+            <label for="deleteOrder">Slet ordre (indtast ordre ID):</label>
+            <input type="text" class="form-control" id="deleteOrder" name="deleteOrder">
+        </div>
+           <p style="color:blue;">${sessionScope.delete}</p>
+           <button type="submit" class="btn btn-primary">Slet</button>
+           </div>
+
+           <div class="col">
+           </div>
+
+       </div>
+    </form>
+
     <br>
 
     <table class="table table-striped">

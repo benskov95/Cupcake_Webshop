@@ -18,7 +18,7 @@
         </div>
 
         <form action="FrontController" method="post">
-            <input type="hidden" name="target" value="nykunde">
+            <input type="hidden" name="target" value="newcustomer">
 
 
             <div class="form-group">

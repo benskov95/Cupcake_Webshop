@@ -34,7 +34,7 @@
 
             <br>
             <br>
-            <a href="FrontController?target=redirect&destination=nykunde">Jeg har ikke en konto </a>
+            <a href="FrontController?target=redirect&destination=newcustomer">Jeg har ikke en konto </a>
             <br>
         </form>
 

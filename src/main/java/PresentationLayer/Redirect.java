@@ -20,7 +20,20 @@ public class Redirect extends Command {
         HttpSession session = request.getSession();
         String destination = request.getParameter("destination");
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
-        boolean hasPaid = (boolean) session.getAttribute("hasPaid");
+
+        if (destination.equals("newcustomer")) {
+            return destination;
+        }
+
+        Customer customer = (Customer) session.getAttribute("customer");
+        ArrayList<Order> customerOrders = OrderMapper.getCustomerOrders(customer.getId());
+        String kundebesked = "";
+
+        if (customerOrders.size() > 0) {
+            kundebesked = "Her kan du se alle dine ordrer.";
+        } else {
+            kundebesked = "Du har ingen registrerede ordrer på nuværende tidspunkt.";
+        }
 
         if (destination.equals("fjerncupcake")) {
            FjernCupcake fjernCupcake = new FjernCupcake();
@@ -50,7 +63,6 @@ public class Redirect extends Command {
         if (destination.equals("addmoney")) {
             String confirm = request.getParameter("money");
             String msg = "";
-            Customer customer = (Customer) session.getAttribute("customer");
 
             if (confirm.equalsIgnoreCase("cupcakes")) {
                 customer.restoreCredit();
@@ -64,9 +76,19 @@ public class Redirect extends Command {
             destination = "mineordrer";
         }
 
-        if (destination.equals("start") && hasPaid || destination.equals("index")) {
-            cupcakes.clear();
+        if (destination.equals("start") || destination.equals("index")) {
+            boolean hasPaid = (boolean) session.getAttribute("hasPaid");
+
+            if (hasPaid) {
+                cupcakes.clear();
+            }
+            if (destination.equals("index")) {
+                cupcakes.clear();
+            }
         }
+
+        session.setAttribute("customerOrders", customerOrders);
+        session.setAttribute("kundebesked", kundebesked);
 
         return destination;
     }

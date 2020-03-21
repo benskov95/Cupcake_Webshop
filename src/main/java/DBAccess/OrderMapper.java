@@ -77,7 +77,7 @@ public class OrderMapper {
         return newId;
     }
 
-    public static int getOrdersById(int customerId) throws LoginSampleException {
+    public static int countOrdersById(int customerId) throws LoginSampleException {
 
         int count = 0;
 
@@ -104,7 +104,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select * from customer_view";
+        String sql = "select * from customer_view order by orderline_id asc";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {

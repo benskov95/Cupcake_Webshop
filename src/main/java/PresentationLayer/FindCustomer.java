@@ -21,7 +21,7 @@ public class FindCustomer extends Command {
             ArrayList<Customer> customers = CustomerMapper.findCustomer(id);
 
             for (Customer customer : customers) {
-                customer.setNumberOfOrders(OrderMapper.getOrdersById(customer.getId()));
+                customer.setNumberOfOrders(OrderMapper.countOrdersById(customer.getId()));
             }
 
             if (customers.size() == 0) {

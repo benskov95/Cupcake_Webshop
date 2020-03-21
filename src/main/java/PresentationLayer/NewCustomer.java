@@ -6,7 +6,7 @@ import FunctionLayer.LoginSampleException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NyKunde extends Command {
+public class NewCustomer extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         String navn = request.getParameter("navn");
@@ -15,7 +15,7 @@ public class NyKunde extends Command {
 
         if (!email.contains("@")) {
             request.setAttribute("emailFejl", "Du skal bruge en email (@) for at oprette en konto.");
-            return "nykunde";
+            return "newcustomer";
         }
 
         LogicFacade.createUser(navn, email, password);

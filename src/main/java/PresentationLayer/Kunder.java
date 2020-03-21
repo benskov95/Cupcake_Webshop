@@ -20,7 +20,7 @@ public class Kunder extends Command {
         ArrayList<Integer> customerOrderNumbers = new ArrayList<>();
 
         for (Customer customer : customers) {
-            customer.setNumberOfOrders(OrderMapper.getOrdersById(customer.getId()));
+            customer.setNumberOfOrders(OrderMapper.countOrdersById(customer.getId()));
         }
 
         session.setAttribute("numberOfOrders", customerOrderNumbers);

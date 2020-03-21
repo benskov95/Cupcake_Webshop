@@ -4,7 +4,7 @@
 
 <title>Mine ordrer</title>
 
-    <p class="lead">${sessionScope.kundebesked}</p>
+    <p class="lead">${sessionScope.customerMessage}</p>
     <p style="color: blue">${requestScope.confirm}</p>
 
     <div class="jumbotron">

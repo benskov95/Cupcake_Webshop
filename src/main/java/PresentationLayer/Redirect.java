@@ -27,12 +27,12 @@ public class Redirect extends Command {
 
         Customer customer = (Customer) session.getAttribute("customer");
         ArrayList<Order> customerOrders = OrderMapper.getCustomerOrders(customer.getId());
-        String kundebesked = "";
+        String customerMessage = "";
 
         if (customerOrders.size() > 0) {
-            kundebesked = "Her kan du se alle dine ordrer.";
+            customerMessage = "Her kan du se alle dine ordrer.";
         } else {
-            kundebesked = "Du har ingen registrerede ordrer på nuværende tidspunkt.";
+            customerMessage = "Du har ingen registrerede ordrer på nuværende tidspunkt.";
         }
 
         if (destination.equals("removecupcake")) {
@@ -73,7 +73,7 @@ public class Redirect extends Command {
             }
 
             request.setAttribute("confirm", msg);
-            destination = "mineordrer";
+            destination = "myorders";
         }
 
         if (destination.equals("start") || destination.equals("index")) {
@@ -88,7 +88,7 @@ public class Redirect extends Command {
         }
 
         session.setAttribute("customerOrders", customerOrders);
-        session.setAttribute("kundebesked", kundebesked);
+        session.setAttribute("customerMessage", customerMessage);
 
         return destination;
     }

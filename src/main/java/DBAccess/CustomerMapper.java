@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CustomerMapper {
 
-    public static void createCustomer(Customer customer) throws LoginSampleException {
+    public static void createCustomer(Customer customer) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         Connection con = Connector.connection();
         try {
@@ -32,7 +32,7 @@ public class CustomerMapper {
         }
     }
 
-    public static Customer login(String email, String password ) throws LoginSampleException {
+    public static Customer login(String email, String password ) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         Connection con = Connector.connection();
         try {
@@ -60,7 +60,7 @@ public class CustomerMapper {
         }
     }
 
-    public static ArrayList<Customer> getAllCustomers() throws LoginSampleException {
+    public static ArrayList<Customer> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Customer> customers = new ArrayList<>();
 
@@ -85,7 +85,7 @@ public class CustomerMapper {
         return customers;
     }
 
-    public static void pay(int newCredit, Customer customer) throws LoginSampleException {
+    public static void pay(int newCredit, Customer customer) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         String sql = "update customer set credit = ? where customer_id =  ?";
         Connection con = Connector.connection();
@@ -102,7 +102,7 @@ public class CustomerMapper {
         }
     }
 
-    public static ArrayList<Customer> findCustomer(int customerId) throws LoginSampleException {
+    public static ArrayList<Customer> findCustomer(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
         ArrayList<Customer> customers = new ArrayList<>();
 
         Connection con = Connector.connection();
@@ -126,7 +126,7 @@ public class CustomerMapper {
         return customers;
     }
 
-    public static void updateCustomer(Customer customer) throws LoginSampleException {
+    public static void updateCustomer(Customer customer) throws LoginSampleException, SQLException, ClassNotFoundException {
         String sql = "update customer set credit = ? where customer_id = ?";
         Connection con = Connector.connection();
 

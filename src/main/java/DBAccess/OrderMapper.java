@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class OrderMapper {
 
-    public static void addOrder(int customerId) throws LoginSampleException {
+    public static void addOrder(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         String sql = "insert into cupcakeshop.order(customer_id) value(?)";
         Connection con = Connector.connection();
@@ -23,7 +23,7 @@ public class OrderMapper {
         }
     }
 
-    public static int getOrderId(int customerId) throws LoginSampleException {
+    public static int getOrderId(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Integer> idList = new ArrayList<>();
         int count = -1;
@@ -52,7 +52,7 @@ public class OrderMapper {
         return orderId;
     }
 
-    public static int addOrderLine(int orderId, int quantity, int totalPrice, int toppingId, int bottomId) throws LoginSampleException {
+    public static int addOrderLine(int orderId, int quantity, int totalPrice, int toppingId, int bottomId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         int newId = 0;
         String sql = "insert into orderline(order_id, quantity, sum, topping_id, bottom_id) values(?, ?, ?, ?, ?)";
@@ -77,7 +77,7 @@ public class OrderMapper {
         return newId;
     }
 
-    public static int countOrdersById(int customerId) throws LoginSampleException {
+    public static int countOrdersById(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         int count = 0;
 
@@ -100,7 +100,7 @@ public class OrderMapper {
         return count;
     }
 
-    public static ArrayList<Order> getAllOrders() throws LoginSampleException {
+    public static ArrayList<Order> getAllOrders() throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Order> orders = new ArrayList<>();
 
@@ -132,7 +132,7 @@ public class OrderMapper {
         return orders;
     }
 
-    public static ArrayList<Order> getSpecificOrders(int id) throws LoginSampleException {
+    public static ArrayList<Order> getSpecificOrders(int id) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Order> orders = new ArrayList<>();
 
@@ -165,7 +165,7 @@ public class OrderMapper {
         return orders;
     }
 
-    public static ArrayList<Order> getCustomerOrders(int customerId) throws LoginSampleException {
+    public static ArrayList<Order> getCustomerOrders(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Order> orders = new ArrayList<>();
 
@@ -195,7 +195,7 @@ public class OrderMapper {
         return orders;
     }
 
-    public static int deleteOrderLine(int id) throws LoginSampleException {
+    public static int deleteOrderLine(int id) throws LoginSampleException, SQLException, ClassNotFoundException {
         int result = 0;
         String sql = "delete from orderLine where order_id = ?";
         Connection con = Connector.connection();
@@ -211,7 +211,7 @@ public class OrderMapper {
         return result;
     }
 
-    public static int deleteOrder(int id) throws LoginSampleException {
+    public static int deleteOrder(int id) throws LoginSampleException, SQLException, ClassNotFoundException {
         int result = 0;
         String sql = "delete from cupcakeshop.order where order_id = ?";
         Connection con = Connector.connection();

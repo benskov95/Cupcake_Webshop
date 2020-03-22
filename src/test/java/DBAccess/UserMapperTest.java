@@ -57,20 +57,20 @@ public class UserMapperTest {
     }
 
     @Test
-    public void testLogin01() throws LoginSampleException {
+    public void testLogin01() throws LoginSampleException, SQLException, ClassNotFoundException {
         // Can we log in
         Customer customer = CustomerMapper.login( "jens@somewhere.com", "jensen" );
         assertTrue( customer != null );
     }
 
     @Test( expected = LoginSampleException.class )
-    public void testLogin02() throws LoginSampleException {
+    public void testLogin02() throws LoginSampleException, SQLException, ClassNotFoundException {
         // We should get an exception if we use the wrong password
         Customer customer = CustomerMapper.login( "jens@somewhere.com", "larsen" );
     }
 
     @Test
-    public void testLogin03() throws LoginSampleException {
+    public void testLogin03() throws LoginSampleException, SQLException, ClassNotFoundException {
         // Jens is supposed to be a customer
         Customer customer = CustomerMapper.login( "jens@somewhere.com", "jensen" );
         assertEquals( "customer", customer.getRole() );

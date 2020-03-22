@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class BottomMapper {
 
-    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException {
+    public static ArrayList<Bottom> getAllBottoms() throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Bottom> bottomList = new ArrayList<>();
 

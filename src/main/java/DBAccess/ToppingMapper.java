@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ToppingMapper {
 
-    public static ArrayList<Topping> getAllToppings() throws LoginSampleException {
+    public static ArrayList<Topping> getAllToppings() throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Topping> toppingList = new ArrayList<>();
 

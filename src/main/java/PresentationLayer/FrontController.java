@@ -44,6 +44,8 @@ public class FrontController extends HttpServlet {
         } catch ( LoginSampleException ex ) {
             request.setAttribute( "error", ex.getMessage() );
             request.getRequestDispatcher( "index.jsp" ).forward( request, response );
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -59,7 +61,7 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-            processRequest( request, response );
+        processRequest( request, response );
     }
 
     /**
@@ -73,7 +75,7 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-            processRequest( request, response );
+        processRequest( request, response );
     }
 
     /**

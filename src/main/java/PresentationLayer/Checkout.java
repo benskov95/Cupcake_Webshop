@@ -9,12 +9,13 @@ import FunctionLayer.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Checkout extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         HttpSession session = request.getSession();
         Customer customer = (Customer) session.getAttribute("customer");
@@ -48,7 +49,7 @@ public class Checkout extends Command {
     }
 
 
-    private int getToppingId(String toppingName) throws LoginSampleException {
+    private int getToppingId(String toppingName) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
 
@@ -60,7 +61,7 @@ public class Checkout extends Command {
         return 0;
     }
 
-    private int getBottomId(String bottomName) throws LoginSampleException {
+    private int getBottomId(String bottomName) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
 

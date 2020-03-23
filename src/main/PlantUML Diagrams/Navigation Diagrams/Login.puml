@@ -1,0 +1,25 @@
+@startuml
+Title Logging in
+state index.jsp
+state "LoginSampleException" as error
+state start.jsp
+state adminstart.jsp
+state noAccount
+state newcustomer.jsp
+
+note right of start.jsp
+Customer information
+stored in session.
+end note
+
+[*] -> index.jsp
+index.jsp --> start.jsp : email and pw OK
+error --> index.jsp : try again
+index.jsp --> error : email or pw not OK
+index.jsp --> noAccount : if first visit
+noAccount --> newcustomer.jsp : create new account
+newcustomer.jsp --> index.jsp
+index.jsp --> adminstart.jsp : if admin
+adminstart.jsp --> [*]
+start.jsp --> [*]
+@enduml

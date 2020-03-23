@@ -1,0 +1,28 @@
+@startuml
+title Purchase Sequence Diagram
+actor Customer
+boundary start.jsp
+boundary cart.jsp
+boundary checkout.jsp
+participant Redirect
+participant FrontController
+participant Checkout
+Participant OrderMapper
+Participant CustomerMapper
+Database CupCakeDatabase
+
+Customer --> cart.jsp : click "buy"
+cart.jsp --> FrontController : http POST checkout
+FrontController --> Checkout : processRequest()
+Checkout --> OrderMapper : execute()
+Checkout --> CustomerMapper : execute()
+OrderMapper --> CupCakeDatabase : addOrderLine()
+CustomerMapper --> CupCakeDatabase : pay()
+CupCakeDatabase --> CupCakeDatabase : ps.executeUpdate
+CupCakeDatabase --> Checkout : hasPaid = true
+Checkout --> FrontController : return "checkout"
+FrontController --> checkout.jsp : forward
+checkout.jsp --> Redirect : click back button
+Redirect --> FrontController : return "start"
+FrontController --> start.jsp : forward
+@enduml

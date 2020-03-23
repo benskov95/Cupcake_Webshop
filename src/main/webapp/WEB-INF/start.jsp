@@ -9,7 +9,7 @@
 <div style="text-align: center">
     <h1 class="display-4">Velkommen ${sessionScope.customer.name}.</h1>
     <p class="lead">Har du en sød tand? Hvis ikke, så får du det, efter du har smagt vores cupcakes!</p>
-    <p style="color: red">${requestScope.noQuantity}</p>
+    <p style="color: red">${requestScope.noneSelected}</p>
     <br>
     <p class="lead"><em>Bestil her:</em>
 

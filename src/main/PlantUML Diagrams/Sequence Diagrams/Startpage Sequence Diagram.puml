@@ -1,0 +1,30 @@
+@startuml
+title Startpage Sequence Diagram
+actor Customer
+boundary start.jsp
+boundary cart.jsp
+participant FrontController
+participant Cart
+participant BottomMapper
+Participant ToppingMapper
+Database CupCakeDatabase
+
+Customer --> start.jsp : select bottom etc.
+start.jsp --> FrontController : http POST cart
+FrontController --> Cart : processRequest()
+Cart --> BottomMapper : execute()
+Cart --> ToppingMapper : execute()
+BottomMapper --> CupCakeDatabase : getAllBottoms()
+ToppingMapper --> CupCakeDatabase : getAllToppings()
+CupCakeDatabase --> BottomMapper : resultset
+CupCakeDatabase --> ToppingMapper : resultset
+BottomMapper --> BottomMapper : validate resultset
+ToppingMapper --> ToppingMapper : validate resultset
+BottomMapper --> Cart : OK
+ToppingMapper --> Cart : OK
+Cart --> Cart : Add cupcake
+Cart --> FrontController : return "cart"
+FrontController --> cart.jsp : forward
+cart.jsp --> Customer : See order(s), pay
+
+@enduml

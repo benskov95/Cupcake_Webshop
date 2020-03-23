@@ -1,0 +1,39 @@
+@startuml
+Title Cart
+state cart.jsp
+state start.jsp
+state checkout.jsp
+state payButton
+state notDoneYet
+state removeCupCake
+
+note left of removeCupCake
+Removes selected
+cupcake from the
+customer's cart
+when clicked.
+end note
+
+note left of cart.jsp
+Customer can see
+cupcakes currently
+in their cart
+(in arraylist).
+end note
+
+note right of payButton
+Total price is
+subtracted from
+customer's balance.
+end note
+
+[*] --> cart.jsp
+cart.jsp --> payButton : click pay button
+payButton --> checkout.jsp
+cart.jsp --> notDoneYet : click 'Not done yet'
+notDoneYet --> start.jsp
+cart.jsp --> removeCupCake
+removeCupCake --> cart.jsp
+checkout.jsp --> [*]
+start.jsp --> [*]
+@enduml

@@ -18,17 +18,26 @@ public class Cart extends Command {
 
         HttpSession session = request.getSession();
         ArrayList<Cupcake> cupcakes = (ArrayList<Cupcake>) session.getAttribute("cupcakes");
-        String bottom = request.getParameter("bottom");
-        String topping = request.getParameter("topping");
+        String bottom;
+        String topping;
+        String noneSelected = "";
         int quantity;
 
         try {
             quantity = Integer.parseInt(request.getParameter("quantity"));
+            bottom = request.getParameter("bottom");
+            topping = request.getParameter("topping");
+
+            if (bottom.length() < 1 || topping.length() < 1) {
+                noneSelected = "Du skal lige vælge noget, før du går videre.";
+                request.setAttribute("noneSelected", noneSelected);
+                return "start";
+            }
         } catch (Exception e) {
-        request.setAttribute("noQuantity", "Du skal lige vælge noget, før du går videre.");
+        noneSelected = "Du skal lige vælge noget, før du går videre.";
+        request.setAttribute("noneSelected", noneSelected);
         return "start";
     }
-
 
         if (topping.equals("Blue")) {
             topping = "Blue cheese";

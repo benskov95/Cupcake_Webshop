@@ -1,0 +1,34 @@
+@startuml
+Title Customer start page
+state start.jsp
+state myorders.jsp
+state cart.jsp
+state index.jsp
+state logout
+state myOrders
+state addToCart
+
+note left of start.jsp
+Select cupcake
+bottom, topping
+and quantity.
+end note
+
+note right of myorders.jsp
+Customer can view
+their own registered
+orders.
+end note
+
+[*] --> start.jsp
+start.jsp --> addToCart : add cupcake(s) to arraylist
+addToCart --> cart.jsp
+cart.jsp --> start.jsp : error if any not selected
+start.jsp --> myOrders : click my orders
+myOrders --> myorders.jsp
+start.jsp --> logout : click log out
+logout --> index.jsp
+cart.jsp --> [*]
+myorders.jsp --> [*]
+index.jsp --> [*]
+@enduml

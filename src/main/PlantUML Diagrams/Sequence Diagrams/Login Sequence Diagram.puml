@@ -1,0 +1,31 @@
+@startuml
+Title Login Sequence Diagram
+actor Customer
+actor Admin
+boundary index.jsp
+boundary start.jsp
+boundary adminstart.jsp
+participant FrontController
+participant Login
+participant LogicFacade
+participant CustomerMapper
+database CupCakeDatabase
+
+Customer --> index.jsp : email & password
+Admin --> index.jsp : email & password
+index.jsp --> FrontController : http POST login
+FrontController --> Login : processRequest()
+Login --> LogicFacade : execute()
+LogicFacade --> CustomerMapper : login()
+CustomerMapper --> CupCakeDatabase : login()
+CupCakeDatabase --> CustomerMapper : resultset
+CustomerMapper --> CustomerMapper : validate resultset
+CustomerMapper --> LogicFacade : OK
+LogicFacade --> Login : OK
+Login --> FrontController : return "start"
+Login --> FrontController : if (admin) return "adminstart"
+FrontController --> start.jsp : forward
+FrontController --> adminstart.jsp : forward
+start.jsp --> Customer : Welcome (customer name)
+adminstart.jsp --> Admin : Welcome Admin
+@enduml

@@ -3,7 +3,7 @@ title Startpage Sequence Diagram
 actor Customer
 boundary start.jsp
 boundary cart.jsp
-participant FrontController
+control FrontController
 participant Cart
 participant BottomMapper
 Participant ToppingMapper

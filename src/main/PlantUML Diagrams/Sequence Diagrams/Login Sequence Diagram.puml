@@ -5,19 +5,23 @@ actor Admin
 boundary index.jsp
 boundary start.jsp
 boundary adminstart.jsp
-participant FrontController
+control FrontController
+participant Command
 participant Login
 participant LogicFacade
 participant CustomerMapper
 database CupCakeDatabase
 
-Customer --> index.jsp : email & password
-Admin --> index.jsp : email & password
-index.jsp --> FrontController : http POST login
-FrontController --> Login : processRequest()
-Login --> LogicFacade : execute()
-LogicFacade --> CustomerMapper : login()
-CustomerMapper --> CupCakeDatabase : login()
+Customer -> index.jsp : email & password
+Admin -> index.jsp : email & password
+index.jsp -> FrontController : doPost()
+FrontController -> FrontController : processRequest()
+FrontController -> Command : from()
+Command --> FrontController : result
+FrontController -> Login : execute()
+Login -> LogicFacade : execute()
+LogicFacade -> CustomerMapper : login()
+CustomerMapper -> CupCakeDatabase : executeQuery()
 CupCakeDatabase --> CustomerMapper : resultset
 CustomerMapper --> CustomerMapper : validate resultset
 CustomerMapper --> LogicFacade : OK

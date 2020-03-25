@@ -19,7 +19,7 @@ public class NewCustomer extends Command {
             return "newcustomer";
         }
 
-        LogicFacade.createUser(navn, email, password);
+        LogicFacade.createCustomer(navn, email, password);
         request.setAttribute("nykunde", "Så er din konto oprettet!\nNu skal du bare logge ind for at bestille.");
         return "index";
     }

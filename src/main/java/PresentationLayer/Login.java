@@ -27,10 +27,10 @@ public class Login extends Command {
         String customerMessage = "";
 
         HttpSession session = request.getSession();
-        ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
-        ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
+        ArrayList<Bottom> bottoms = LogicFacade.getAllBottoms();
+        ArrayList<Topping> toppings = LogicFacade.getAllToppings();
         ArrayList<Cupcake> cupcakes = new ArrayList<>();
-        ArrayList<Order> customerOrders = OrderMapper.getCustomerOrders(customer.getId());
+        ArrayList<Order> customerOrders = LogicFacade.getCustomerOrders(customer.getId());
 
         if (customerOrders.size() > 0) {
             customerMessage = "Her kan du se alle dine ordrer.";
@@ -41,6 +41,7 @@ public class Login extends Command {
         session.setAttribute("hasPaid", false);
         session.setAttribute("customerMessage", customerMessage);
         session.setAttribute("cupcakes", cupcakes);
+        session.setAttribute("totalPrice", 0);
         session.setAttribute("customerOrders", customerOrders);
         session.setAttribute("bottoms", bottoms);
         session.setAttribute("toppings", toppings);

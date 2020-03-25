@@ -6,6 +6,7 @@
 
 <p class="lead">Her kan du se din kurvs indhold.</p>
 <p style="color: red">${requestScope.insufficientFunds}<br>${requestScope.insufficientFundsTwo}</p>
+<p style="color: red">${requestScope.cartEmpty}</p>
 
 <div class="jumbotron">
 

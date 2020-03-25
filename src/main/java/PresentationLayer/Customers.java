@@ -3,6 +3,7 @@ package PresentationLayer;
 import DBAccess.CustomerMapper;
 import DBAccess.OrderMapper;
 import FunctionLayer.Customer;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +18,11 @@ public class Customers extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         HttpSession session = request.getSession();
-        ArrayList<Customer> customers = CustomerMapper.getAllCustomers();
+        ArrayList<Customer> customers = LogicFacade.getAllCustomers();
         ArrayList<Integer> customerOrderNumbers = new ArrayList<>();
 
         for (Customer customer : customers) {
-            customer.setNumberOfOrders(OrderMapper.countOrdersById(customer.getId()));
+            customer.setNumberOfOrders(LogicFacade.countOrdersById(customer.getId()));
         }
 
         session.setAttribute("numberOfOrders", customerOrderNumbers);

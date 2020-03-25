@@ -1,11 +1,10 @@
 package PresentationLayer;
-
-import DBAccess.OrderMapper;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 public class DeleteOrder extends Command {
 
@@ -14,8 +13,8 @@ public class DeleteOrder extends Command {
 
         try {
             int orderId = Integer.parseInt(request.getParameter("deleteOrder"));
-            int result = OrderMapper.deleteOrderLine(orderId);
-            OrderMapper.deleteOrder(orderId);
+            int result = LogicFacade.deleteOrderLine(orderId);
+            LogicFacade.deleteOrder(orderId);
 
             if (result == 1) {
                 return "Ordren blev slettet.";

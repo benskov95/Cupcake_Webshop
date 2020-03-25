@@ -43,8 +43,8 @@ public class Cart extends Command {
             topping = "Blue cheese";
         }
 
-        ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
-        ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
+        ArrayList<Bottom> bottoms = LogicFacade.getAllBottoms();
+        ArrayList<Topping> toppings = LogicFacade.getAllToppings();
         int bottomPrice = 0;
         int toppingPrice = 0;
 

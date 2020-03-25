@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import DBAccess.OrderMapper;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 
@@ -16,7 +17,7 @@ public class OrderLine extends Command{
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         HttpSession session = request.getSession();
-        ArrayList<Order> orders = OrderMapper.getAllOrders();
+        ArrayList<Order> orders = LogicFacade.getAllOrders();
 
         session.setAttribute("orders", orders);
         return "orderline";

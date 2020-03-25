@@ -24,24 +24,29 @@ public class Checkout extends Command {
         int toppingId;
         int bottomId;
 
+        if (cupcakes.size() == 0 || totalPrice <= 0) {
+            request.setAttribute("cartEmpty", "Der er ingen cupcakes i din kurv.");
+            return "cart";
+        }
+
         if (customer.getCredit() < totalPrice) {
             request.setAttribute("insufficientFunds", "Du har ikke nok penge til at foretage dette køb.");
             request.setAttribute("insufficientFundsTwo", "Gå ind på \"Mine order\" for at få flere.");
-            return "kurv";
+            return "cart";
         } else {
             int purchase = customer.getCredit() - totalPrice;
-            CustomerMapper.pay(purchase, customer);
+            LogicFacade.pay(purchase, customer);
             session.setAttribute("hasPaid", true);
 
             for (Cupcake cupcake : cupcakes) {
 
-                OrderMapper.addOrder(customer.getId());
-                int orderId = OrderMapper.getOrderId(customer.getId());
+                LogicFacade.addOrder(customer.getId());
+                int orderId = LogicFacade.getOrderId(customer.getId());
 
                 toppingId = getToppingId(cupcake.getToppingName());
                 bottomId = getBottomId(cupcake.getBottomName());
 
-                OrderMapper.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
+                LogicFacade.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
             }
         }
 
@@ -51,7 +56,7 @@ public class Checkout extends Command {
 
     private int getToppingId(String toppingName) throws LoginSampleException, SQLException, ClassNotFoundException {
 
-        ArrayList<Topping> toppings = ToppingMapper.getAllToppings();
+        ArrayList<Topping> toppings = LogicFacade.getAllToppings();
 
         for (Topping topping : toppings) {
             if (topping.getToppingName().equals(toppingName)) {
@@ -63,7 +68,7 @@ public class Checkout extends Command {
 
     private int getBottomId(String bottomName) throws LoginSampleException, SQLException, ClassNotFoundException {
 
-        ArrayList<Bottom> bottoms = BottomMapper.getAllBottoms();
+        ArrayList<Bottom> bottoms = LogicFacade.getAllBottoms();
 
         for (Bottom bottom : bottoms) {
             if (bottom.getBottomName().equals(bottomName)) {

@@ -3,6 +3,7 @@ package PresentationLayer;
 import DBAccess.CustomerMapper;
 import DBAccess.OrderMapper;
 import FunctionLayer.Customer;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +19,10 @@ public class FindCustomer extends Command {
 
         try {
             int id = Integer.parseInt(request.getParameter("findcustomer"));
-            ArrayList<Customer> customers = CustomerMapper.findCustomer(id);
+            ArrayList<Customer> customers = LogicFacade.findCustomer(id);
 
             for (Customer customer : customers) {
-                customer.setNumberOfOrders(OrderMapper.countOrdersById(customer.getId()));
+                customer.setNumberOfOrders(LogicFacade.countOrdersById(customer.getId()));
             }
 
             if (customers.size() == 0) {

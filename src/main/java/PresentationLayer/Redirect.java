@@ -2,10 +2,7 @@ package PresentationLayer;
 
 import DBAccess.CustomerMapper;
 import DBAccess.OrderMapper;
-import FunctionLayer.Cupcake;
-import FunctionLayer.Customer;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.Order;
+import FunctionLayer.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +23,17 @@ public class Redirect extends Command {
             return destination;
         }
 
+        if (destination.equals("cart")) {
+            boolean hasPaid = (boolean) session.getAttribute("hasPaid");
+
+            if (hasPaid) {
+                cupcakes.clear();
+                session.setAttribute("totalPrice", 0);
+            }
+        }
+
         Customer customer = (Customer) session.getAttribute("customer");
-        ArrayList<Order> customerOrders = OrderMapper.getCustomerOrders(customer.getId());
+        ArrayList<Order> customerOrders = LogicFacade.getCustomerOrders(customer.getId());
         String customerMessage = "";
 
         if (customerOrders.size() > 0) {
@@ -46,7 +52,7 @@ public class Redirect extends Command {
         if (destination.equals("deleteorder")) {
             DeleteOrder deleteOrder = new DeleteOrder();
             String delete = deleteOrder.execute(request, response);
-            ArrayList<Order> orders = OrderMapper.getAllOrders();
+            ArrayList<Order> orders = LogicFacade.getAllOrders();
 
             request.setAttribute("delete", delete);
             session.setAttribute("orders", orders);
@@ -57,7 +63,7 @@ public class Redirect extends Command {
 
             try {
                 int id = Integer.parseInt(request.getParameter("getCustomerOrders"));
-                ArrayList<Order> getCustomerOrders = OrderMapper.getSpecificOrders(id);
+                ArrayList<Order> getCustomerOrders = LogicFacade.getSpecificOrders(id);
 
                 if (getCustomerOrders.size() == 0) {
                     request.setAttribute("result", "Denne kunde har ikke lavet nogen ordrer endnu.");
@@ -84,7 +90,7 @@ public class Redirect extends Command {
 
             if (confirm.equalsIgnoreCase("cupcakes")) {
                 customer.restoreCredit();
-                CustomerMapper.updateCustomer(customer);
+                LogicFacade.updateCustomer(customer);
                 msg = "Korrekt! Din saldo er nu opdateret. Køb løs!";
             } else {
                 msg = "Forkert. Svaret er ellers åbenlyst.";
@@ -99,6 +105,7 @@ public class Redirect extends Command {
 
             if (hasPaid) {
                 cupcakes.clear();
+                session.setAttribute("totalPrice", 0);
             }
             if (destination.equals("index")) {
                 cupcakes.clear();

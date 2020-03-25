@@ -17,9 +17,9 @@ Admin -> index.jsp : email & password
 index.jsp -> FrontController : doPost()
 FrontController -> FrontController : processRequest()
 FrontController -> Command : from()
-Command --> FrontController : result
+Command --> FrontController : login
 FrontController -> Login : execute()
-Login -> LogicFacade : execute()
+Login -> LogicFacade : login()
 LogicFacade -> CustomerMapper : login()
 CustomerMapper -> CupCakeDatabase : executeQuery()
 CupCakeDatabase --> CustomerMapper : resultset
@@ -28,8 +28,8 @@ CustomerMapper --> LogicFacade : OK
 LogicFacade --> Login : OK
 Login --> FrontController : return "start"
 Login --> FrontController : if (admin) return "adminstart"
-FrontController --> start.jsp : forward
-FrontController --> adminstart.jsp : forward
+FrontController --> start.jsp : forward()
+FrontController --> adminstart.jsp : forward()
 start.jsp --> Customer : Welcome (customer name)
 adminstart.jsp --> Admin : Welcome Admin
 @enduml

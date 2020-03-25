@@ -5,9 +5,10 @@ boundary start.jsp
 boundary cart.jsp
 boundary checkout.jsp
 control FrontController
+participant Redirect
 participant Command
 participant Checkout
-participant Redirect
+participant LogicFacade
 Participant OrderMapper
 Participant CustomerMapper
 Database CupCakeDatabase
@@ -16,17 +17,26 @@ Customer -> cart.jsp : klik "køb"
 cart.jsp -> FrontController : doPost()
 FrontController -> FrontController : processRequest()
 FrontController -> Command : from()
-Command --> FrontController : result
+Command --> FrontController : checkout
 FrontController -> Checkout : execute()
-Checkout -> OrderMapper : execute()
-Checkout -> CustomerMapper : execute()
-OrderMapper -> CupCakeDatabase : addOrderLine()
-CustomerMapper -> CupCakeDatabase : pay()
-CupCakeDatabase -> CupCakeDatabase : executeUpdate()
-CupCakeDatabase --> Checkout : hasPaid = true
+Checkout -> LogicFacade : pay()
+Checkout -> LogicFacade : addOrder()
+Checkout -> LogicFacade : addOrderLine()
+LogicFacade -> CustomerMapper : pay()
+LogicFacade -> OrderMapper : addOrder()
+LogicFacade -> OrderMapper : addOrderLine()
+CustomerMapper -> CupCakeDatabase : executeUpdate()
+OrderMapper -> CupCakeDatabase : executeUpdate()
+OrderMapper -> CupCakeDatabase : executeUpdate()
+CupCakeDatabase --> CustomerMapper : OK
+CupCakeDatabase --> OrderMapper : OK
+CustomerMapper --> LogicFacade : OK
+OrderMapper --> LogicFacade : OK
+LogicFacade --> Checkout : OK
+Checkout --> Redirect : hasPaid = true
 Checkout --> FrontController : return "checkout"
-FrontController --> checkout.jsp : forward
-checkout.jsp --> Redirect : click back button
+FrontController --> checkout.jsp : forward()
+checkout.jsp --> Redirect : clear() (tilbage-knap)
 Redirect --> FrontController : return "start"
-FrontController --> start.jsp : forward
+FrontController --> start.jsp : forward()
 @enduml

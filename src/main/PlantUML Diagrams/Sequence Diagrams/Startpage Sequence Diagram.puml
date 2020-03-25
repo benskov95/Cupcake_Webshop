@@ -4,18 +4,25 @@ actor Customer
 boundary start.jsp
 boundary cart.jsp
 control FrontController
+participant Command
 participant Cart
+participant LogicFacade
 participant BottomMapper
 Participant ToppingMapper
 Database CupCakeDatabase
 
-Customer --> start.jsp : select bottom etc.
-start.jsp --> FrontController : http POST cart
-FrontController --> Cart : processRequest()
-Cart --> BottomMapper : execute()
-Cart --> ToppingMapper : execute()
-BottomMapper --> CupCakeDatabase : getAllBottoms()
-ToppingMapper --> CupCakeDatabase : getAllToppings()
+Customer -> start.jsp : vælg bottom osv.
+start.jsp -> FrontController : doPost()
+FrontController -> FrontController : processRequest()
+FrontController -> Command : from()
+Command --> FrontController : cart
+FrontController -> Cart : execute()
+Cart -> LogicFacade : getAllBottoms()
+Cart -> LogicFacade : getAllToppings()
+LogicFacade -> BottomMapper : getAllBottoms
+LogicFacade -> ToppingMapper : getAllToppings
+BottomMapper -> CupCakeDatabase : executeQuery()
+ToppingMapper -> CupCakeDatabase : executeQuery()
 CupCakeDatabase --> BottomMapper : resultset
 CupCakeDatabase --> ToppingMapper : resultset
 BottomMapper --> BottomMapper : validate resultset
@@ -24,7 +31,7 @@ BottomMapper --> Cart : OK
 ToppingMapper --> Cart : OK
 Cart --> Cart : Add cupcake
 Cart --> FrontController : return "cart"
-FrontController --> cart.jsp : forward
-cart.jsp --> Customer : See order(s), pay
+FrontController --> cart.jsp : forward()
+cart.jsp --> Customer : Se ordre, betal
 
 @enduml

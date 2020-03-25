@@ -1,0 +1,51 @@
+@startuml
+
+Title Cupcake Shop
+state newcustomer.jsp
+
+[*] --> index.jsp
+index.jsp -right-> newcustomer.jsp: Lav bruger
+newcustomer.jsp --> index.jsp: Efter oprettelse
+index.jsp --> LoggedOnAdmin: Admin login (hvis ok)
+index.jsp -->index.jsp: Login (ikke ok)
+index.jsp --> LoggedOnCustomer: Log på (hvis ok)
+
+LoggedOnAdmin --> index.jsp: Log ud
+LoggedOnCustomer --> index.jsp: Log ud
+
+
+state LoggedOnCustomer {
+    state start.jsp
+    state cart.jsp
+    state checkout.jsp
+
+note left of start.jsp
+customer name and role
+stored in session
+end note
+
+    [*]--> start.jsp
+    start.jsp --> cart.jsp: Vælg cupcake.
+    cart.jsp --> checkout.jsp: Betal
+    cart.jsp -right-> start.jsp: Vælg flere cupcakes.
+    checkout.jsp --> start.jsp: Efter betaling
+}
+
+state LoggedOnAdmin {
+    state adminstart.jsp
+    state customer.jsp
+    state orderline.jsp
+
+note right of adminstart.jsp
+admin and role
+stored in session
+end note
+
+    [*]-->adminstart.jsp
+    adminstart.jsp --> orderline.jsp: Se alle ordre
+    adminstart.jsp --> customer.jsp: Se alle kunder
+    orderline.jsp --> adminstart.jsp: Tilbage
+    customer.jsp --> adminstart.jsp: Tilbage
+
+}
+@enduml

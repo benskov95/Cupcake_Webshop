@@ -10,6 +10,33 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The Redirect class is crucial to the
+ * functionality of this program, as it
+ * is used heavily and on almost every page.
+ *
+ * Its purpose is to ensure that the
+ * customer gets sent to the correct
+ * jsp page when certain conditions are
+ * met or to ensure that certain
+ * variables or elements are modified
+ * in various circumstances.
+ *
+ * An example of this can be found in
+ * the final if statement, where
+ * the cart (cupcakes) is cleared
+ * if the customer has successfully
+ * made a purchase or if they
+ * return to the index page (log out.
+ *
+ * This ensures that once an order
+ * is completed, the cart no longer
+ * contains the cupcakes that were
+ * previously added.
+ *
+ * @author benjamin
+ */
+
 public class Redirect extends Command {
 
     @Override

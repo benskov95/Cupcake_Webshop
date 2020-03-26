@@ -1,5 +1,14 @@
 package FunctionLayer;
 
+/**
+ * The purpose of Order is to work
+ * as a template for the order
+ * information that is sent to
+ * and retrieved from the database.
+ *
+ * @author benjamin
+ */
+
 public class Order {
 
     private int orderLineId;

@@ -1,8 +1,12 @@
 package FunctionLayer;
 
 /**
- * The purpose of User is to...
- * @author kasper
+ * The purpose of Customer is to work
+ * as a template for the customer
+ * information that is sent to
+ * and retrieved from the database.
+ *
+ * @author benjamin
  */
 public class Customer {
 

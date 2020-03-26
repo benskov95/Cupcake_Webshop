@@ -7,9 +7,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- The purpose of Connector is to...
+ * The purpose of the Connector class is to
+ * establish a connection to the SQL database
+ * so that the information within it can be
+ * accessed and modified.
 
- @author kasper
+ @author benjamin
  */
 public class Connector {
 

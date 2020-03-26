@@ -9,8 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * The purpose of LogicFacade is to...
- * @author kasper
+ * The purpose of LogicFacade is to serve as
+ * a bridge between the data mappers and the
+ * regular classes in which the mapper methods
+ * are used. All of the method information is
+ * stored in individual mappers and accessed
+ * through the LogicFacade methods.
+ *
+ * @author benjamin
  */
 public class LogicFacade {
 

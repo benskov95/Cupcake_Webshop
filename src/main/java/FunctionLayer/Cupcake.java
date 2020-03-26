@@ -1,5 +1,15 @@
 package FunctionLayer;
 
+/**
+ * The purpose of Cupcake is to work
+ * as a template for what a cupcake
+ * is made up of. The information
+ * stored in each Cupcake object
+ * is used to make orders.
+ *
+ * @author benjamin
+ */
+
 public class Cupcake {
 
     private int count;

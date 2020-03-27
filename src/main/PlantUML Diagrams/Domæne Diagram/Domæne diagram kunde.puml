@@ -1,0 +1,71 @@
+@startuml
+
+class Customer {
+    id
+    name
+    email
+    password
+    role
+    credit
+    numberOfOrders
+}
+
+Customer "1" -- "*" Order
+Customer "1" -- "1" Cart
+
+class Order {
+    order_id
+    customer_id
+    order_date
+}
+
+class Orderline {
+    orderline_id
+    order_id
+    quantity
+    sum
+    topping_id
+    bottom_id
+}
+
+Order "1" -- "1" Orderline
+Orderline "1" -- "*" Cupcake
+
+class Cart {
+    bottom
+    topping
+    quantity
+}
+
+Cart "1" -- "*" Cupcake
+
+class Cupcake {
+    toppingName
+    bottomName
+    price
+
+}
+
+Cupcake "*" -- "1" Bottom
+Cupcake "*" -- "1" Topping
+
+
+class Bottom {
+    id
+    name
+}
+
+class Topping {
+    id
+    name
+
+
+}
+
+
+
+hide members
+hide circle
+show fields
+
+@enduml

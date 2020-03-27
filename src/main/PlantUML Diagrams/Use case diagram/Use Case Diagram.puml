@@ -4,7 +4,6 @@ Title Use Case Diagram
 actor Kunde
 actor Admin
 rectangle PaymentGateway <<actor>>
-rectangle GLS <<actor>>
 rectangle Webshop {
   (Login) .> (Vælg cupcakes) : include
   (Vælg cupcakes) .> (Køb cupcakes) : include

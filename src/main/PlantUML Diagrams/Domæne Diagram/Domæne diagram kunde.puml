@@ -37,11 +37,12 @@ class Cart {
     quantity
 }
 
-Cart "1" -- "*" Cupcake
+Cart "1" -right- "*" Cupcake
 
 class Cupcake {
     toppingName
     bottomName
+    quantity
     price
 
 }

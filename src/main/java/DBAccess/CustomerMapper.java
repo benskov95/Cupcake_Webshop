@@ -59,7 +59,7 @@ public class CustomerMapper {
 
     /**
      * The login method grants a customer access to the
-     * database if their email and password match an
+     * website if their email and password match an
      * existing pair in the database.
      * @param email
      * Customer's chosen email which is used to log in on the website.

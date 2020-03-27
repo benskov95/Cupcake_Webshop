@@ -28,7 +28,7 @@ class Orderline {
     bottom_id
 }
 
-Order "1" -- "1" Orderline
+Order "1" -- "*" Orderline
 Orderline "1" -- "*" Cupcake
 
 class Cart {

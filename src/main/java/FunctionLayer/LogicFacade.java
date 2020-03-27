@@ -54,12 +54,8 @@ public class LogicFacade {
         return ToppingMapper.getAllToppings();
     }
 
-    public static void addOrder(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
-        OrderMapper.addOrder(customerId);
-    }
-
-    public static int getOrderId(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
-        return OrderMapper.getOrderId(customerId);
+    public static int addOrder(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
+        return OrderMapper.addOrder(customerId);
     }
 
     public static int addOrderLine(int orderId, int quantity, int totalPrice, int toppingId, int bottomId) throws LoginSampleException, SQLException, ClassNotFoundException {

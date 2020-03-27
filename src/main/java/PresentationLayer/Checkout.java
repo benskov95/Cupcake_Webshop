@@ -38,10 +38,9 @@ public class Checkout extends Command {
             LogicFacade.pay(purchase, customer);
             session.setAttribute("hasPaid", true);
 
-            for (Cupcake cupcake : cupcakes) {
+            int orderId = LogicFacade.addOrder(customer.getId());
 
-                LogicFacade.addOrder(customer.getId());
-                int orderId = LogicFacade.getOrderId(customer.getId());
+            for (Cupcake cupcake : cupcakes) {
 
                 toppingId = getToppingId(cupcake.getToppingName());
                 bottomId = getBottomId(cupcake.getBottomName());
@@ -49,7 +48,6 @@ public class Checkout extends Command {
                 LogicFacade.addOrderLine(orderId, cupcake.getQuantity(), cupcake.getCombinedPrice(), toppingId, bottomId);
             }
         }
-
         return "checkout";
     }
 

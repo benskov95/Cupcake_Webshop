@@ -22,75 +22,9 @@ public class OrderMapper {
      * @param customerId
      * The customer ID is necessary to make
      * an order.
-     * @throws LoginSampleException
-     * Thrown if login credentials do not match with
-     * any of the registered customers in the database.
-     * @throws SQLException
-     * Thrown if the provided SQL string in each method
-     * has incorrect syntax, unknown keywords etc.
-     * @throws ClassNotFoundException
-     * Thrown from Connector if the "Class.forName" method
-     * doesn't find the specified class
-     * (JDBC driver in this case).
-     */
-    public static void addOrder(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
-
-        String sql = "insert into cupcakeshop.order(customer_id) value(?)";
-        Connection con = Connector.connection();
-
-        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setInt(1, customerId);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println("Fejl i connection til database");
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * The getOrderId method is specifically made
-     * to ensure that order IDs and orderLine IDs
-     * are paired correctly when an order is
-     * added to the database.
-     *
-     * This method is necessary because of how
-     * the order system works in our database.
-     * An order is made first, followed by an
-     * orderLine. Both have unique IDs, but
-     * an orderLine cannot be made without an
-     * order ID.
-     *
-     * Therefore, after the order is made, this
-     * method is called. It then gets all order IDs
-     * tied to the customer with the ID provided
-     * as an argument, adds them to an ArrayList
-     * of Integers and counts the number of
-     * elements in the array.
-     *
-     * When there are no more order IDs to retrieve,
-     * the last element added to the ArrayList will
-     * be returned.
-     *
-     * NOTE: the variable 'count' starts at -1
-     * to ensure that it is equal to the
-     * index of the final element in the
-     * array.
-     *
-     * When the while loop begins,
-     * and the first order is added,
-     * it becomes 0 which then matches
-     * with the index of the first
-     * element in the array.
-     *
-     * @param customerId
-     * This customer ID is necessary to make the
-     * final order, for reasons explained above.
      * @return
-     * When the loop is finished, the final
-     * element (the order ID) of the ArrayList
-     * is selected with the count variable and
-     * returned.
+     * Once made, the order id is returned
+     * so it can be used in orderlines.
      * @author benjamin
      * @throws LoginSampleException
      * Thrown if login credentials do not match with
@@ -103,30 +37,22 @@ public class OrderMapper {
      * doesn't find the specified class
      * (JDBC driver in this case).
      */
-    public static int getOrderId(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
+    public static int addOrder(int customerId) throws LoginSampleException, SQLException, ClassNotFoundException {
 
-        ArrayList<Integer> idList = new ArrayList<>();
-        int count = -1;
+        String sql = "insert into cupcakeshop.order(customer_id) value(?)";
+        Connection con = Connector.connection();
         int orderId = 0;
 
-        String sql = "select order_id from cupcakeshop.order where customer_id = ?";
-        Connection con = Connector.connection();
-
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
-
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, customerId);
-            ResultSet resultSet = ps.executeQuery();
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("order_id");
-                idList.add(id);
-                count++;
+            ps.executeUpdate();
+            ResultSet resultSet = ps.getGeneratedKeys();
+            if (resultSet.next()) {
+                orderId = resultSet.getInt(1);
             }
 
-            orderId = idList.get(count);
-
         } catch (SQLException e) {
-            System.out.println("Connection error");
+            System.out.println("Fejl i connection til database");
             e.printStackTrace();
         }
         return orderId;
@@ -136,7 +62,7 @@ public class OrderMapper {
      * the addOrderLine method adds the second part
      * of an order to the database.
      * @param orderId
-     * This order ID is provided by the getOrderId
+     * This order ID is provided by the addOrder
      * method.
      * @param quantity
      * The customer's selected quantity of cupcakes
@@ -359,7 +285,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select * from customer_view where customer_id = ?";
+        String sql = "select * from customer_view where customer_id = ? order by order_date";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {

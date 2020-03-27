@@ -295,13 +295,14 @@ public class OrderMapper {
 
             while (resultSet.next()) {
                 int orderId = resultSet.getInt("order_id");
+                int orderLineId = resultSet.getInt("orderline_id");
                 String bname = resultSet.getString("bname");
                 String tname = resultSet.getString("tname");
                 int quantity = resultSet.getInt("quantity");
                 int price = resultSet.getInt("sum");
                 String date = resultSet.getString("order_date");
 
-                Order order = new Order(orderId, bname, tname, quantity, price, date);
+                Order order = new Order(orderId, orderLineId, bname, tname, quantity, price, date);
                 orders.add(order);
             }
         } catch (SQLException e) {

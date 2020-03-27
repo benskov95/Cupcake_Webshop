@@ -35,8 +35,9 @@ public class Order {
         this.date = date;
     }
 
-    public Order(int orderId, String bottomName, String toppingName, int quantity, int price, String date) {
+    public Order(int orderId, int orderLineId, String bottomName, String toppingName, int quantity, int price, String date) {
         this.orderId = orderId;
+        this.orderLineId = orderLineId;
         this.bottomName = bottomName;
         this.toppingName = toppingName;
         this.quantity = quantity;

@@ -17,6 +17,7 @@
             <thead class="thead-light">
             <tr>
                 <th>Ordre ID</th>
+                <th>Orderline ID</th>
                 <th>Bund</th>
                 <th>Topping</th>
                 <th>Antal</th>
@@ -27,6 +28,7 @@
             <c:forEach var="order" items="${sessionScope.customerOrders}">
             <tr>
                 <td>${order.orderId}</td>
+                <td>${order.orderLineId}</td>
                 <td>${order.bottomName}</td>
                 <td>${order.toppingName}</td>
                 <td>${order.quantity}</td>

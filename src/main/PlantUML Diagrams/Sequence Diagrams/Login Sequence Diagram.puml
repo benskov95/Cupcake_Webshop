@@ -1,4 +1,5 @@
 @startuml
+autonumber
 Title Login Sequence Diagram
 actor Customer
 actor Admin

@@ -6,20 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-<<<<<<< HEAD
-        <module name="prejektSkabelon" />
-        <module name="ProjektSkabelon-master" />
-        <module name="Projektskabelon-master" />
-        <module name="Cupcake webshop" />
-        <module name="Projektskabelon" />
-=======
-        <module name="Cupcake webshop" />
         <module name="Projektskabelon" />
         <module name="ProjektSkabelon-master" />
+        <module name="Cupcake webshop" />
         <module name="prejektSkabelon" />
         <module name="Cupcake_Webshop" />
         <module name="Projektskabelon-master" />
->>>>>>> frede
       </profile>
     </annotationProcessing>
   </component>

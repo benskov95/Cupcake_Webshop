@@ -16,10 +16,11 @@ public class DeleteOrder extends Command {
             int result = LogicFacade.deleteOrderLine(orderId);
             LogicFacade.deleteOrder(orderId);
 
-            if (result == 1) {
-                return "Ordren blev slettet.";
-            } else {
+
+            if (result == 0) {
                 return "Der er ingen ordrer med dette ID. Prøv igen.";
+            } else {
+                return "Ordren blev slettet.";
             }
 
         } catch (Exception e) {

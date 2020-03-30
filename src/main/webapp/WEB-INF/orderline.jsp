@@ -68,8 +68,8 @@
     <table class="table table-striped">
         <thead class="thead-light">
         <tr>
-            <th>Orderline ID</th>
             <th>Ordre ID</th>
+            <th>Orderline ID</th>
             <th>Kunde ID</th>
             <th>Bund</th>
             <th>Topping</th>
@@ -81,8 +81,8 @@
 
         <c:forEach var="order" items="${sessionScope.orders}">
         <tr>
-            <td>${order.orderLineId}</td>
             <td>${order.orderId}</td>
+            <td>${order.orderLineId}</td>
             <td>${order.customerId}</td>
             <td>${order.bottomName}</td>
             <td>${order.toppingName}</td>

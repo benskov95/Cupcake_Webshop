@@ -173,7 +173,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select * from customer_view order by orderline_id asc";
+        String sql = "select * from customer_view order by order_id asc";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -229,7 +229,7 @@ public class OrderMapper {
 
         ArrayList<Order> orders = new ArrayList<>();
 
-        String sql = "select * from customer_view where customer_id = ? order by orderline_id asc";
+        String sql = "select * from customer_view where customer_id = ? order by order_id asc";
 
         Connection con = Connector.connection();
         try (PreparedStatement ps = con.prepareStatement(sql)) {

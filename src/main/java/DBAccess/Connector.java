@@ -27,7 +27,7 @@ public class Connector {
     }
 
     public static Connection connection() throws SQLException, ClassNotFoundException {
-        if (singleton == null || singleton.isClosed()) {
+        if ((singleton == null) || singleton.isClosed()) {
             setDBCredentials();
             Class.forName("com.mysql.cj.jdbc.Driver");
             singleton = DriverManager.getConnection(URL, USERNAME, PASSWORD);

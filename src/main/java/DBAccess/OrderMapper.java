@@ -314,7 +314,7 @@ public class OrderMapper {
 
     public static int deleteOrderLine(int id) throws LoginSampleException, SQLException, ClassNotFoundException {
         int result = 0;
-        String sql = "delete from orderLine where order_id = ?";
+        String sql = "delete from orderline where order_id = ?";
         Connection con = Connector.connection();
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {

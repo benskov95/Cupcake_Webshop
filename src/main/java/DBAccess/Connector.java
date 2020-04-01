@@ -46,7 +46,7 @@ public class Connector {
 
         } else {
             // Localhost
-            URL = "jdbc:mysql://localhost:3306/cupcakeshop?serverTimezone=UTC&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/cupcakeshop?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
             USERNAME = "root";
             PASSWORD = "root";
         }
